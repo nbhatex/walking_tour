@@ -1,0 +1,139 @@
+[
+  {
+    "id": 349,
+    "poi_id": 0,
+    "latitude": 15.49655,
+    "longitude": 73.83618,
+    "pathToNextPOI":[
+      {"seqno":0,"latitude":15.49668244392611,"longitude":73.83608720670686},
+      {"seqno":1,"latitude":15.49692023616948,"longitude":73.83599601160051},
+      {"seqno":2,"latitude":15.496894389199882,"longitude":73.8358940876578},
+      {"seqno":3,"latitude":15.497121842422164,"longitude":73.83581362138692},
+      {"seqno":4,"latitude":15.498010975346212,"longitude":73.83562050233787},
+      {"seqno":5,"latitude":15.498145378827633,"longitude":73.83519134889613},
+      {"seqno":6,"latitude":15.498409016170879,"longitude":73.83460126291261}
+    ]
+  },
+  {
+    "id": 305,
+    "poi_id": 1,
+    "latitude": 15.49836,
+    "longitude": 73.8345,
+  },
+  {
+    "id": 306,
+    "poi_id": 2,
+    "latitude": 15.49863852,
+    "longitude": 73.83393902,
+    "pathToNextPOI":[
+      {"seqno":0,"latitude":15.49903,"longitude":73.83344},
+      {"seqno":0,"latitude":15.49939,"longitude":73.83271}
+    ]
+  },
+  {
+    "id": 310,
+    "poi_id": 3,
+    "latitude": 15.49951216,
+    "longitude": 73.83272396,
+    "pathToNextPOI":[
+      {"seqno":0,"latitude":15.49963,"longitude":73.83273}
+    ]
+  },
+  {
+    "id": 314,
+    "poi_id": 4,
+    "latitude": 15.49953,
+    "longitude": 73.83263
+  },
+  {
+    "id": 316,
+    "poi_id": 5,
+    "latitude": 15.49963986,
+    "longitude": 73.83253362,
+    "pathToNextPOI":[
+      {"seqno":0,"latitude":15.49968,"longitude":73.83233}
+    ]
+  },
+  {
+    "id": 319,
+    "poi_id": 6,
+    "latitude": 15.4996562,
+    "longitude": 73.83219653,
+    "pathToNextPOI":[
+      {"seqno":0,"latitude":15.49963,"longitude":73.83232},
+      {"seqno":0,"latitude":15.49809,"longitude":73.83215},
+      {"seqno":0,"latitude":15.49796,"longitude":73.83233},
+      {"seqno":0,"latitude":15.497,"longitude":73.83198}
+    ]
+  },
+  {
+    "id": 325,
+    "poi_id": 7,
+    "latitude": 15.49717336,
+    "longitude": 73.83139236,
+    "pathToNextPOI":[
+      {"seqno":0,"latitude":15.497178705689478,"longitude":73.83106611143059},
+      {"seqno":1,"latitude":15.497147689364178,"longitude":73.83096955190608},
+      {"seqno":2,"latitude":15.496832356459286,"longitude":73.83087299238154},
+      {"seqno":3,"latitude":15.49636194090361,"longitude":73.83084617029155}
+    ]
+  },
+  {
+    "id": 328,
+    "poi_id": 8,
+    "latitude": 15.49615182,
+    "longitude": 73.83082956
+  },
+  {
+    "id": 330,
+    "poi_id": 9,
+    "latitude": 15.49616,
+    "longitude": 73.83144,
+    "pathToNextPOI":[
+      {"seqno":0,"latitude":15.49615,"longitude":73.8318}
+    ]
+  },
+  {
+    "id": 332,
+    "poi_id": 10,
+    "latitude": 15.49565327,
+    "longitude": 73.83187906,
+    "pathToNextPOI":[
+      {"seqno":0,"latitude":15.494844714205243,"longitude":73.8319539226145},
+      {"seqno":1,"latitude":15.494855053096373,"longitude":73.8319539226145}
+    ]
+  },
+  {
+    "id": 334,
+    "poi_id": 11,
+    "latitude": 15.49475,
+    "longitude": 73.83183,
+    "pathToNextPOI":[
+      {"seqno":0,"latitude":15.494821451698783,"longitude":73.83175812135681},
+      {"seqno":1,"latitude":15.494764587783704,"longitude":73.83102856050515}
+    ]
+  },
+  {
+    "id": 335,
+    "poi_id": 12,
+    "latitude": 15.49473671,
+    "longitude": 73.83098784,
+    "pathToNextPOI":[
+      {"seqno":0,"latitude":15.49475,"longitude":73.83071},
+      {"seqno":0,"latitude":15.49399,"longitude":73.8305},
+      {"seqno":0,"latitude":15.49295,"longitude":73.83002},
+      {"seqno":0,"latitude":15.49208,"longitude":73.82984},
+      {"seqno":0,"latitude":15.49175,"longitude":73.8297},
+      {"seqno":0,"latitude":15.49147,"longitude":73.82939},
+      {"seqno":0,"latitude":15.49129,"longitude":73.82924},
+      {"seqno":0,"latitude":15.4911,"longitude":73.82894},
+      {"seqno":0,"latitude":15.49095,"longitude":73.82886}
+    ]
+  },
+  {
+    "id": 347,
+    "poi_id": 13,
+    "latitude": 15.49085,
+    "longitude": 73.82879,
+  }
+]
