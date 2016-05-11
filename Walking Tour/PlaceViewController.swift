@@ -10,7 +10,8 @@ import UIKit
 
 class PlaceViewController:UIViewController, PlaceSelectionDelegate {
     
-    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    @IBOutlet weak var descriptionText: UITextView!
     
     var content:Content!
     
@@ -28,7 +29,7 @@ class PlaceViewController:UIViewController, PlaceSelectionDelegate {
                 placeSelected(firstContent)
             }
         }
-        
+        descriptionText.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -37,7 +38,8 @@ class PlaceViewController:UIViewController, PlaceSelectionDelegate {
     }
     
     func placeSelected(newContent: Content) {
-        descriptionLabel.text = newContent.description
+        descriptionText.text = newContent.description
+
         imageScrollView.subviews.map { $0.removeFromSuperview() }
         if newContent.photos.isEmpty {
             scrollViewHeight.constant = 0

@@ -229,32 +229,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7R7-hC-Eij">
-                                <rect key="frame" x="20" y="303" width="560" height="248"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xth-Cg-crM">
                                 <rect key="frame" x="0.0" y="64" width="600" height="242"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="242" id="9Xv-um-k44"/>
                                 </constraints>
                             </scrollView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="qfk-Ih-mLQ">
+                                <rect key="frame" x="0.0" y="304" width="600" height="247"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Xth-Cg-crM" secondAttribute="trailing" constant="-20" id="25H-P8-gxF"/>
-                            <constraint firstItem="7R7-hC-Eij" firstAttribute="top" secondItem="Xth-Cg-crM" secondAttribute="bottom" constant="-3" id="S44-cj-pIA"/>
+                            <constraint firstItem="qfk-Ih-mLQ" firstAttribute="leading" secondItem="Xth-Cg-crM" secondAttribute="leading" id="2Dr-dd-X1W"/>
+                            <constraint firstItem="qfk-Ih-mLQ" firstAttribute="trailing" secondItem="Xth-Cg-crM" secondAttribute="trailing" id="4tw-hC-yMH"/>
+                            <constraint firstItem="qfk-Ih-mLQ" firstAttribute="top" secondItem="Xth-Cg-crM" secondAttribute="bottom" constant="-2" id="I7q-Ir-tJZ"/>
+                            <constraint firstItem="qfk-Ih-mLQ" firstAttribute="top" secondItem="1PS-Kl-BZO" secondAttribute="bottom" constant="240" id="IWB-Wq-xeF"/>
                             <constraint firstItem="Xth-Cg-crM" firstAttribute="leading" secondItem="WiZ-GJ-dLJ" secondAttribute="leading" id="aRO-uU-msg"/>
                             <constraint firstItem="Xth-Cg-crM" firstAttribute="top" secondItem="1PS-Kl-BZO" secondAttribute="bottom" id="gGg-F5-HYy"/>
-                            <constraint firstItem="7R7-hC-Eij" firstAttribute="trailing" secondItem="WiZ-GJ-dLJ" secondAttribute="trailingMargin" id="slA-jF-wQp"/>
-                            <constraint firstItem="7R7-hC-Eij" firstAttribute="bottom" secondItem="Yay-A0-rGm" secondAttribute="top" id="weQ-WH-S0b"/>
-                            <constraint firstItem="7R7-hC-Eij" firstAttribute="leading" secondItem="WiZ-GJ-dLJ" secondAttribute="leadingMargin" id="wrL-vN-5Cn"/>
+                            <constraint firstItem="qfk-Ih-mLQ" firstAttribute="bottom" secondItem="Yay-A0-rGm" secondAttribute="top" id="vDT-da-YN9"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="IWB-Wq-xeF"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="descriptionLabel" destination="7R7-hC-Eij" id="ucC-BP-z99"/>
+                        <outlet property="descriptionText" destination="qfk-Ih-mLQ" id="kU7-uH-PFl"/>
                         <outlet property="imageScrollView" destination="Xth-Cg-crM" id="4WZ-Ax-K1v"/>
                         <outlet property="scrollViewHeight" destination="9Xv-um-k44" id="OA2-kd-q3V"/>
                     </connections>

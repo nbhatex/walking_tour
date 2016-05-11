@@ -34,6 +34,8 @@ class GeoDataManager {
         return places
     }
     
+    //TODO: Needs to be a lazy variable
+    
     func getBounds()-> (latitudeDelta: Double,longitudeDelta: Double, centerLatitude: Double, centerLongitude: Double) {
         var maxLat = 0.0, minLat = 90.0, maxLng = 0.0, minLng = 180.0
         for place in places {
@@ -61,6 +63,7 @@ class GeoDataManager {
         return (latitudeDelta, longitudeDelta, centerLatitude, centerLongitude)
     }
     
+    //TODO: needs to be a lazy variable
     func getConnectedPath()->[CLLocationCoordinate2D] {
         var coordinates = [CLLocationCoordinate2D]()
         for place in places {

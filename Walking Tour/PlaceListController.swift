@@ -18,7 +18,7 @@ class PlaceListController: UITableViewController {
     
     var sectionHeaderHeight = CGFloat(100)
     
-    var sectioHeaderView:UIImageView!
+    var sectioHeaderView:UIView!
     
     var contentManager:ContentManager {
         return ContentManager.sharedInstance
@@ -30,8 +30,6 @@ class PlaceListController: UITableViewController {
     //MARK: table delegate methods
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-       
             return contentManager.contents.count
     }
     
@@ -68,10 +66,30 @@ class PlaceListController: UITableViewController {
         return sectioHeaderView.frame.height
     }
     
+    //MARK: UI Helper methods
+    
     func initSectionHeader()  {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "post_office")
         imageView.contentMode = .ScaleAspectFill
-        sectioHeaderView = imageView
+        imageView.sizeToFit()
+        let imageHeight = imageView.frame.height
+        
+        let imageLabel = UILabel()
+        imageLabel.text = "Post Office"
+        imageLabel.textAlignment = .Center
+        imageLabel.font = UIFont(name: "Helvetica", size: 13)
+        imageLabel.sizeToFit()
+        imageLabel.frame = CGRect(x: 0, y: imageHeight, width: view.frame.width, height: 20)
+        let labelHeight = imageLabel.frame.height
+        
+        let headerHeight = imageHeight + labelHeight
+        
+    
+        
+        sectioHeaderView = UIView(frame:CGRect(x: 0, y: 0, width: view.frame.width, height: headerHeight))
+        
+        sectioHeaderView.addSubview(imageView)
+        sectioHeaderView.addSubview(imageLabel)
     }
 }
