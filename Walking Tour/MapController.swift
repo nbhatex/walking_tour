@@ -8,10 +8,13 @@
 
 import UIKit
 import MapKit
+import Photos
 
-class MapController:UIViewController, MKMapViewDelegate {
+class MapController:UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    
+    var locationManager:CLLocationManager!
     
     var geoDataManager:GeoDataManager {
         return GeoDataManager.sharedInstance
@@ -19,6 +22,10 @@ class MapController:UIViewController, MKMapViewDelegate {
     
     var contentManager:ContentManager {
         return ContentManager.sharedInstance
+    }
+    
+    var imageManager:PHImageManager {
+        return PHImageManager()
     }
     
     override func viewDidLoad() {
@@ -29,6 +36,36 @@ class MapController:UIViewController, MKMapViewDelegate {
         
         addPath()
         mapView.delegate = self
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        
+        
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        switch authorizationStatus {
+        case .Authorized:
+            mapView.showsUserLocation = true
+            locationManager.startUpdatingLocation()
+            print("authorized")
+        case .AuthorizedWhenInUse:
+            mapView.showsUserLocation = true
+            locationManager.startUpdatingLocation()
+            print("authorized when in use")
+        case .Denied:
+            print("denied")
+            locationManager.requestWhenInUseAuthorization()
+        case .NotDetermined:
+            print("not determined")
+            locationManager.requestWhenInUseAuthorization()
+        case .Restricted:
+            print("restricted")
+            locationManager.requestWhenInUseAuthorization()
+        }
+        
+        //locationManager.requestWhenInUseAuthorization()
+        
     }
     
     func addPlaceAnnotations() {
@@ -71,7 +108,8 @@ class MapController:UIViewController, MKMapViewDelegate {
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        
+        print(annotation is PlaceAnnotation)
+        if annotation is PlaceAnnotation {
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier("pin")
         
         if pinView == nil {
@@ -82,18 +120,10 @@ class MapController:UIViewController, MKMapViewDelegate {
         } else {
             pinView!.annotation = annotation
         }
-        if let placeAnnotation = annotation as? PlaceAnnotation {
-            let content = contentManager.getContent((placeAnnotation.placeId))
-            if let photo = content.photos.first {
-                    //TODO : Fix this to show image thumbnail
-                let imageView = UIImageView(frame:CGRect(x: 0,y: 0,width: 32,height: 32))
-                imageView.contentMode = .ScaleAspectFit
-                imageView.image = UIImage(named: photo.title)
-                pinView!.leftCalloutAccessoryView = imageView
-                
-            }
-        }
+        
         return pinView
+        }
+        return nil
     }
     
     func mapView(mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -107,4 +137,30 @@ class MapController:UIViewController, MKMapViewDelegate {
             self.tabBarController?.selectedIndex = 1
         }
     }
+    //MARK : Location Manager
+    
+   
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+        //print("Latitude: \(location.coordinate.latitude). Longitude: \(location.coordinate.longitude).")
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status {
+        case .Authorized:
+            print("authorized x")
+        case .AuthorizedWhenInUse:
+            mapView.showsUserLocation = true
+            locationManager.startUpdatingLocation()
+            print("authorized when in use x")
+        case .Denied:
+            print("denied x")
+        case .NotDetermined:
+            print("not determined x")
+        case .Restricted:
+            print("restricted x")
+        }
+    }
+    
 }
