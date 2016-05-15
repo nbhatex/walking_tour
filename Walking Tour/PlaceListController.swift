@@ -58,17 +58,26 @@ class PlaceListController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return sectioHeaderView
+        if splitViewController?.collapsed == true  {
+            return sectioHeaderView
+        } else {
+            return UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        }
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        sectioHeaderView.sizeToFit()
-        return sectioHeaderView.frame.height
+        if splitViewController?.collapsed == true  {
+            sectioHeaderView.sizeToFit()
+            return sectioHeaderView.frame.height
+        } else {
+            return 0
+        }
     }
     
     //MARK: UI Helper methods
     
     func initSectionHeader()  {
+        
         let imageView = UIImageView()
         imageView.image = UIImage(named: "post_office")
         imageView.contentMode = .ScaleAspectFill

@@ -235,13 +235,16 @@
                                     <constraint firstAttribute="height" constant="242" id="9Xv-um-k44"/>
                                 </constraints>
                             </scrollView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="qfk-Ih-mLQ">
-                                <rect key="frame" x="0.0" y="304" width="600" height="247"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfk-Ih-mLQ">
+                                <rect key="frame" x="0.0" y="343" width="600" height="208"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="efJ-0e-8yO">
+                                <rect key="frame" x="281" y="306" width="39" height="37"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -250,12 +253,16 @@
                             <constraint firstItem="qfk-Ih-mLQ" firstAttribute="trailing" secondItem="Xth-Cg-crM" secondAttribute="trailing" id="4tw-hC-yMH"/>
                             <constraint firstItem="qfk-Ih-mLQ" firstAttribute="top" secondItem="Xth-Cg-crM" secondAttribute="bottom" constant="-2" id="I7q-Ir-tJZ"/>
                             <constraint firstItem="qfk-Ih-mLQ" firstAttribute="top" secondItem="1PS-Kl-BZO" secondAttribute="bottom" constant="240" id="IWB-Wq-xeF"/>
+                            <constraint firstItem="qfk-Ih-mLQ" firstAttribute="top" secondItem="efJ-0e-8yO" secondAttribute="bottom" id="JmM-i6-XnQ"/>
+                            <constraint firstItem="efJ-0e-8yO" firstAttribute="centerX" secondItem="WiZ-GJ-dLJ" secondAttribute="centerX" id="MGT-WS-tsN"/>
+                            <constraint firstItem="efJ-0e-8yO" firstAttribute="top" secondItem="Xth-Cg-crM" secondAttribute="bottom" id="NXj-jG-qiT"/>
                             <constraint firstItem="Xth-Cg-crM" firstAttribute="leading" secondItem="WiZ-GJ-dLJ" secondAttribute="leading" id="aRO-uU-msg"/>
                             <constraint firstItem="Xth-Cg-crM" firstAttribute="top" secondItem="1PS-Kl-BZO" secondAttribute="bottom" id="gGg-F5-HYy"/>
                             <constraint firstItem="qfk-Ih-mLQ" firstAttribute="bottom" secondItem="Yay-A0-rGm" secondAttribute="top" id="vDT-da-YN9"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="I7q-Ir-tJZ"/>
                                 <exclude reference="IWB-Wq-xeF"/>
                             </mask>
                         </variation>
@@ -263,6 +270,7 @@
                     <connections>
                         <outlet property="descriptionText" destination="qfk-Ih-mLQ" id="kU7-uH-PFl"/>
                         <outlet property="imageScrollView" destination="Xth-Cg-crM" id="4WZ-Ax-K1v"/>
+                        <outlet property="pageControl" destination="efJ-0e-8yO" id="Gzc-nV-GTb"/>
                         <outlet property="scrollViewHeight" destination="9Xv-um-k44" id="OA2-kd-q3V"/>
                     </connections>
                 </viewController>

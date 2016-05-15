@@ -35,7 +35,7 @@ class MapController:UIViewController, MKMapViewDelegate {
         let places = geoDataManager.getPlaces();
         var annotations = [MKPointAnnotation]()
         for place in places {
-            let annotation = MKPointAnnotation()
+            let annotation = PlaceAnnotation(id: place.id)
             annotation.title = contentManager.getContent(place.id)!.title
             annotation.coordinate = place.coordinate
             annotations.append(annotation)
@@ -78,9 +78,33 @@ class MapController:UIViewController, MKMapViewDelegate {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
             pinView!.canShowCallout = true
             pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+            
         } else {
             pinView!.annotation = annotation
         }
+        if let placeAnnotation = annotation as? PlaceAnnotation {
+            let content = contentManager.getContent((placeAnnotation.placeId))
+            if let photo = content.photos.first {
+                    //TODO : Fix this to show image thumbnail
+                let imageView = UIImageView(frame:CGRect(x: 0,y: 0,width: 32,height: 32))
+                imageView.contentMode = .ScaleAspectFit
+                imageView.image = UIImage(named: photo.title)
+                pinView!.leftCalloutAccessoryView = imageView
+                
+            }
+        }
         return pinView
+    }
+    
+    func mapView(mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == annotationView.rightCalloutAccessoryView {
+            if let splitView = self.tabBarController?.viewControllers?.last as? SplitViewController {
+                splitView.assignedDisplayMode = .PrimaryHidden
+                if let placeAnnotation = annotationView.annotation as? PlaceAnnotation {
+                    splitView.placeId = placeAnnotation.placeId
+                }
+            }
+            self.tabBarController?.selectedIndex = 1
+        }
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlaceViewController:UIViewController, PlaceSelectionDelegate {
+class PlaceViewController:UIViewController, PlaceSelectionDelegate, UIScrollViewDelegate {
     
     
     @IBOutlet weak var descriptionText: UITextView!
@@ -19,6 +19,7 @@ class PlaceViewController:UIViewController, PlaceSelectionDelegate {
     
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
    
+    @IBOutlet weak var pageControl: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,9 @@ class PlaceViewController:UIViewController, PlaceSelectionDelegate {
                 placeSelected(firstContent)
             }
         }
-        descriptionText.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20)
+        descriptionText.textContainerInset = UIEdgeInsetsMake(0, 20, 20, 20)
+        imageScrollView.delegate = self
+        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -39,7 +42,7 @@ class PlaceViewController:UIViewController, PlaceSelectionDelegate {
     
     func placeSelected(newContent: Content) {
         descriptionText.text = newContent.description
-
+        pageControl.hidden = true
         imageScrollView.subviews.map { $0.removeFromSuperview() }
         if newContent.photos.isEmpty {
             scrollViewHeight.constant = 0
@@ -48,25 +51,42 @@ class PlaceViewController:UIViewController, PlaceSelectionDelegate {
         let imageWidth = view.frame.width
         let imageHeight = view.frame.height * 0.4
         var imageNum = CGFloat(0.0);
+        let contentWidth = CGFloat(newContent.photos.count) * imageWidth
+        imageScrollView.contentSize = CGSize(width: contentWidth , height: imageHeight+20)
         for photo in newContent.photos {
             let offset = imageNum * imageWidth
-            let imageContainerView = UIView()
             
-            let imageView = UIImageView(frame: CGRectMake(offset, 0, imageWidth, imageHeight - 20))
+            let imageView = UIImageView(frame:CGRectMake(offset, 0, imageWidth, imageHeight))
             imageView.image=UIImage(named: photo.name)
             imageView.contentMode = .ScaleAspectFit
-            imageContainerView.addSubview(imageView)
+            imageScrollView.addSubview(imageView)
             
-            let imageLabel = UILabel(frame:CGRectMake(offset, imageHeight - 20 , imageWidth, 20))
+            let imageLabel = UILabel(frame:CGRectMake(offset, imageHeight , imageWidth, 20))
             imageLabel.text = photo.title
             imageLabel.textAlignment = .Center
             imageLabel.font = UIFont(name: "Helvetica", size: 13)
-            imageContainerView.addSubview(imageLabel)
+            imageScrollView.addSubview(imageLabel)
             
-            imageScrollView.addSubview(imageContainerView)
             imageNum = imageNum + 1.0
         }
-        imageScrollView.contentSize = CGSize(width: imageNum * imageWidth, height: imageHeight)
-        scrollViewHeight.constant = imageHeight
+        if newContent.photos.count > 1 {
+            pageControl.pageIndicatorTintColor = UIColor(colorLiteralRed: 1, green: 0, blue: 0, alpha: 1)
+            pageControl.currentPageIndicatorTintColor = UIColor(colorLiteralRed: 0, green: 1, blue: 0, alpha: 1)
+            pageControl.numberOfPages = newContent.photos.count
+            pageControl.autoresizingMask = .FlexibleLeftMargin
+            pageControl.currentPage = 0
+            pageControl.hidden = false
+        }
+        imageScrollView.sizeToFit()
+        
+        
+        scrollViewHeight.constant = imageHeight+20
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        if pageControl != nil {
+            let pageNum = round(scrollView.contentOffset.x / scrollView.frame.width)
+            pageControl.currentPage = Int(pageNum)
+        }
     }
 }

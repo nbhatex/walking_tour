@@ -26,6 +26,7 @@
 		4E50EB5D1CD6F4F4004BBF3A /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E50EB5C1CD6F4F4004BBF3A /* MapController.swift */; };
 		4E54139C1CD9A0110051CA84 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54139B1CD9A0110051CA84 /* Coordinate.swift */; };
 		4E5471061CE1550200BC4678 /* PlaceImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5471051CE1550200BC4678 /* PlaceImageCell.swift */; };
+		4E6BAF2C1CE3A00900A67BC0 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6BAF2B1CE3A00900A67BC0 /* PlaceAnnotation.swift */; };
 		4E6FE4941CDA653B004A0466 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FE4931CDA653B004A0466 /* Content.swift */; };
 		4E6FE4961CDA67B2004A0466 /* PlaceListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FE4951CDA67B2004A0466 /* PlaceListController.swift */; };
 		4E783EB01CDECD3D005C2F6F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E783EAF1CDECD3D005C2F6F /* Photo.swift */; };
@@ -74,6 +75,7 @@
 		4E50EB5C1CD6F4F4004BBF3A /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		4E54139B1CD9A0110051CA84 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		4E5471051CE1550200BC4678 /* PlaceImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceImageCell.swift; sourceTree = "<group>"; };
+		4E6BAF2B1CE3A00900A67BC0 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		4E6FE4931CDA653B004A0466 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		4E6FE4951CDA67B2004A0466 /* PlaceListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceListController.swift; sourceTree = "<group>"; };
 		4E783EAF1CDECD3D005C2F6F /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				4E06EEDA1CDCD97F00AA29C0 /* FaqsTableViewController.swift */,
 				4E0A67101CDF60FB002A81F6 /* PlaceListCell.swift */,
 				4E5471051CE1550200BC4678 /* PlaceImageCell.swift */,
+				4E6BAF2B1CE3A00900A67BC0 /* PlaceAnnotation.swift */,
 			);
 			path = "Walking Tour";
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				4E4B04951CDB8792008EBF29 /* SplitViewController.swift in Sources */,
 				4E06EED91CDCD8B300AA29C0 /* Faq.swift in Sources */,
 				4E06EEDB1CDCD97F00AA29C0 /* FaqsTableViewController.swift in Sources */,
+				4E6BAF2C1CE3A00900A67BC0 /* PlaceAnnotation.swift in Sources */,
 				4E783EB01CDECD3D005C2F6F /* Photo.swift in Sources */,
 				4E1547271CD96FAC00008C10 /* GeoDataManager.swift in Sources */,
 				4E54139C1CD9A0110051CA84 /* Coordinate.swift in Sources */,
