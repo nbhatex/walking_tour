@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E020DEB1CEA115F002CBB3B /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E020DEA1CEA115F002CBB3B /* Forecast.swift */; };
 		4E06EED71CDCD82C00AA29C0 /* FaqManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06EED61CDCD82C00AA29C0 /* FaqManager.swift */; };
 		4E06EED91CDCD8B300AA29C0 /* Faq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06EED81CDCD8B300AA29C0 /* Faq.swift */; };
 		4E06EEDB1CDCD97F00AA29C0 /* FaqsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06EEDA1CDCD97F00AA29C0 /* FaqsTableViewController.swift */; };
@@ -30,6 +31,7 @@
 		4E6FE4941CDA653B004A0466 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FE4931CDA653B004A0466 /* Content.swift */; };
 		4E6FE4961CDA67B2004A0466 /* PlaceListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FE4951CDA67B2004A0466 /* PlaceListController.swift */; };
 		4E783EB01CDECD3D005C2F6F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E783EAF1CDECD3D005C2F6F /* Photo.swift */; };
+		4E8E8D3E1CE8CC6600D2286A /* WaetherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E8D3D1CE8CC6600D2286A /* WaetherManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E020DEA1CEA115F002CBB3B /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		4E06EED61CDCD82C00AA29C0 /* FaqManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaqManager.swift; sourceTree = "<group>"; };
 		4E06EED81CDCD8B300AA29C0 /* Faq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Faq.swift; sourceTree = "<group>"; };
 		4E06EEDA1CDCD97F00AA29C0 /* FaqsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaqsTableViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		4E6FE4931CDA653B004A0466 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		4E6FE4951CDA67B2004A0466 /* PlaceListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceListController.swift; sourceTree = "<group>"; };
 		4E783EAF1CDECD3D005C2F6F /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		4E8E8D3D1CE8CC6600D2286A /* WaetherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaetherManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 				4E783EAF1CDECD3D005C2F6F /* Photo.swift */,
 				4E114D311CDA462A0049002A /* ContentManager.swift */,
 				4E6FE4931CDA653B004A0466 /* Content.swift */,
+				4E8E8D3D1CE8CC6600D2286A /* WaetherManager.swift */,
+				4E020DEA1CEA115F002CBB3B /* Forecast.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 				4E1547291CD9705A00008C10 /* Place.swift in Sources */,
 				4E50EB5D1CD6F4F4004BBF3A /* MapController.swift in Sources */,
 				4E5471061CE1550200BC4678 /* PlaceImageCell.swift in Sources */,
+				4E020DEB1CEA115F002CBB3B /* Forecast.swift in Sources */,
 				4E6FE4941CDA653B004A0466 /* Content.swift in Sources */,
 				4E2716791CD623AA0062A7AD /* AppDelegate.swift in Sources */,
 				4E6FE4961CDA67B2004A0466 /* PlaceListController.swift in Sources */,
@@ -329,6 +336,7 @@
 				4E4B04931CDB857E008EBF29 /* PlaceViewController.swift in Sources */,
 				4E06EED71CDCD82C00AA29C0 /* FaqManager.swift in Sources */,
 				4E114D321CDA462A0049002A /* ContentManager.swift in Sources */,
+				4E8E8D3E1CE8CC6600D2286A /* WaetherManager.swift in Sources */,
 				4E0A67111CDF60FB002A81F6 /* PlaceListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
