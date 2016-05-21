@@ -34,6 +34,7 @@ class GeoDataManager {
         return places
     }
     
+    
     //TODO: Needs to be a lazy variable
     
     func getBounds()-> (latitudeDelta: Double,longitudeDelta: Double, centerLatitude: Double, centerLongitude: Double) {

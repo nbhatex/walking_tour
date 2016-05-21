@@ -17,11 +17,17 @@ class ViewController: UIViewController {
                 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "StartWalk" {
+            print("Start Walking")
+            if let tabBarController = segue.destinationViewController as? UITabBarController {
+                if let placeSelectionDelegate = tabBarController.viewControllers![0] as? PlaceSelectionDelegate {
+                    LocationManager.sharedInstance.placeSelectionDelegate = placeSelectionDelegate
+                }
+            }
+            
+        }
     }
-
-
 }
 

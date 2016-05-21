@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wZ9-QQ-1W9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wZ9-QQ-1W9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -30,6 +30,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Et6-Do-qq3" kind="show" identifier="StartWalk" action="showDetailViewController:sender:" id="CSC-NB-bPF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Yl-XX-Rvf">
                                 <rect key="frame" x="-35" y="274" width="230" height="52"/>
@@ -217,7 +220,7 @@
             </objects>
             <point key="canvasLocation" x="3135" y="510"/>
         </scene>
-        <!--Place View Controller-->
+        <!--Item-->
         <scene sceneID="Lmd-nr-QM2">
             <objects>
                 <viewController id="JaP-cW-9UT" customClass="PlaceViewController" customModule="Walking_Tour" customModuleProvider="target" sceneMemberID="viewController">
@@ -267,6 +270,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="EtG-eE-Lss"/>
                     <connections>
                         <outlet property="descriptionText" destination="qfk-Ih-mLQ" id="kU7-uH-PFl"/>
                         <outlet property="imageScrollView" destination="Xth-Cg-crM" id="4WZ-Ax-K1v"/>
@@ -364,6 +368,24 @@
             </objects>
             <point key="canvasLocation" x="1126" y="268"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="z2r-Or-qeP">
+            <objects>
+                <tabBarController id="Et6-Do-qq3" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="R2h-xP-vir">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="JaP-cW-9UT" kind="relationship" relationship="viewControllers" id="rsG-NQ-Nro"/>
+                        <segue destination="Nyf-2B-hvg" kind="relationship" relationship="viewControllers" id="YIW-ez-sN8"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Td1-Mx-ryi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="940" y="2084"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="KSG-g8-njH">
             <objects>
@@ -388,4 +410,8 @@
         <image name="MapIcon" width="32" height="32"/>
         <image name="prepareIcon" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YIW-ez-sN8"/>
+        <segue reference="rsG-NQ-Nro"/>
+    </inferredMetricsTieBreakers>
 </document>

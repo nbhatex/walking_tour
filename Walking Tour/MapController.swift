@@ -8,13 +8,11 @@
 
 import UIKit
 import MapKit
-import Photos
 
-class MapController:UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapController:UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var locationManager:CLLocationManager!
     
     var geoDataManager:GeoDataManager {
         return GeoDataManager.sharedInstance
@@ -22,10 +20,6 @@ class MapController:UIViewController, MKMapViewDelegate, CLLocationManagerDelega
     
     var contentManager:ContentManager {
         return ContentManager.sharedInstance
-    }
-    
-    var imageManager:PHImageManager {
-        return PHImageManager()
     }
     
     override func viewDidLoad() {
@@ -37,34 +31,7 @@ class MapController:UIViewController, MKMapViewDelegate, CLLocationManagerDelega
         addPath()
         mapView.delegate = self
         
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        
-        
-        let authorizationStatus = CLLocationManager.authorizationStatus()
-        switch authorizationStatus {
-        case .Authorized:
-            mapView.showsUserLocation = true
-            locationManager.startUpdatingLocation()
-            print("authorized")
-        case .AuthorizedWhenInUse:
-            mapView.showsUserLocation = true
-            locationManager.startUpdatingLocation()
-            print("authorized when in use")
-        case .Denied:
-            print("denied")
-            locationManager.requestWhenInUseAuthorization()
-        case .NotDetermined:
-            print("not determined")
-            locationManager.requestWhenInUseAuthorization()
-        case .Restricted:
-            print("restricted")
-            locationManager.requestWhenInUseAuthorization()
-        }
-        
-        //locationManager.requestWhenInUseAuthorization()
+        LocationManager.sharedInstance.mapView = mapView
         
     }
     
@@ -137,30 +104,4 @@ class MapController:UIViewController, MKMapViewDelegate, CLLocationManagerDelega
             self.tabBarController?.selectedIndex = 1
         }
     }
-    //MARK : Location Manager
-    
-   
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
-        //print("Latitude: \(location.coordinate.latitude). Longitude: \(location.coordinate.longitude).")
-    }
-    
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        switch status {
-        case .Authorized:
-            print("authorized x")
-        case .AuthorizedWhenInUse:
-            mapView.showsUserLocation = true
-            locationManager.startUpdatingLocation()
-            print("authorized when in use x")
-        case .Denied:
-            print("denied x")
-        case .NotDetermined:
-            print("not determined x")
-        case .Restricted:
-            print("restricted x")
-        }
-    }
-    
 }
