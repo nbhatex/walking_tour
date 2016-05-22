@@ -1,10 +1,12 @@
   [
     {
       "title" : "History of Goa",
+      "type" : "QAndA",
       "description" : "According to legends, Goa is the land of Gomantak from the Mahabharata, which means \"the fertile land with plentiful water\". Earliest records referring to Goa are found in cuneiform writing of the Sumerian era and interestingly, the Sumerian measurement in agriculture is still followed. <br> Goa was ruled by both Hindu and Muslim dynasties before being discovered in 1498 by Vasco Da Gama, royal navigator for the Portuguese empire. Control of the spice route, which was the monopoly of the Arabs till then, and spreading Christianity were the two driving factors for Portuguese rule in India. St. Franciz Xavier is the patron saint of Goa. The Portuguese introduced Western medicine to Goa, which suffered frequent epidemics and plagues. <br> Under Portuguese rule, Goa became a great trade centre, especially in Arab horses and reached its peak culturally and economically. It was referred to as the Lisbon of the East. The Indian army finally liberated Goa in 1961.<br>  Portuguese influence can be seen in every aspect of Goan life; in it's architecture, cuisine, language and way of life. The Goans are a very creative people, and music and art are a big part of their lives.<br> Having being a melting pot of races, religions and cultures of the East and West over centuries, Goa has developed a multi-hued and distinctive lifestyle quite different from the rest of the country. It's quaint architecture, scenic beaches and rivers, tolerant mindset and susegaad (relaxed) way of life make it truly a traveler's paradise."
     },
     {
-     "title" : "How to reach there",
-     "description" : "Starting point of this walk is quite close to the Panjim Bus stand. Either you can start from Panjim Bus stand or ask for directions to Old Patto Bridge."
+     "title" : "Weather for next 5 days",
+     "type" : "Weather",
+     "city_id" : "1260607"
     }
   ]

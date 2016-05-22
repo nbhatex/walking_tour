@@ -42,7 +42,16 @@ class PlaceViewController:UIViewController, PlaceSelectionDelegate, UIScrollView
     }
     
     func placeSelected(newContent: Content) {
-        descriptionText.text = newContent.explaination
+        let data = newContent.explaination.dataUsingEncoding(NSUTF8StringEncoding)
+        do {
+            let formattedText = try NSAttributedString(data:data! , options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+            descriptionText.attributedText = formattedText
+            descriptionText.font = UIFont(name: "Helvetica", size: 15)
+            descriptionText.textAlignment = .Justified
+        } catch {
+            print(error)
+        }
+        
         pageControl.hidden = true
         imageScrollView.subviews.map { $0.removeFromSuperview() }
         if newContent.photos.count == 0 {

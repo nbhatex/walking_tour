@@ -8,10 +8,17 @@
 
 import Foundation
 
+enum FaqType:String {
+    case QAndA = "QAndA"
+    case Weather = "Weather"
+}
+
 class Faq {
 
     var title:String
-    var description:String
+    var type:FaqType
+    var description:String?
+    var cityId:String?
     
     init(dictionary:[String:AnyObject]){
         
@@ -25,6 +32,18 @@ class Faq {
             description = descriptionFromJson
         } else {
             description = ""
+        }
+        
+        if let typeFromJson = dictionary["type"] as? String {
+            type = FaqType(rawValue: typeFromJson)!
+        } else {
+            type = FaqType.QAndA
+        }
+        
+        if let cityIdFromJson = dictionary["city_id"] as? String {
+            cityId = cityIdFromJson
+        } else {
+            cityId = ""
         }
     }
 }

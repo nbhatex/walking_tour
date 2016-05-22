@@ -26,7 +26,7 @@ class WeatherManager {
             "id" : "\(cityId)",
             "mode" : "json",
             "appid" : APP_ID,
-            "cnt" : "3",
+            "cnt" : "5",
             "units" : "metric"
         ]
         

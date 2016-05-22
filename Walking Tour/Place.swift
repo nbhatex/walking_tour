@@ -18,6 +18,8 @@ class Place: NSManagedObject {
     
     @NSManaged var pathToNextPlace:NSOrderedSet
     
+    @NSManaged var walk:Walk?
+    
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }

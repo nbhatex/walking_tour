@@ -12,6 +12,8 @@ class FaqsTableViewController : UITableViewController {
     
     var sectionCounts:[Int]!
     
+    var sectionData = [Int:Any]()
+    
     var faqsManager:FaqManager {
         return FaqManager.sharedInstance
     }
@@ -19,10 +21,6 @@ class FaqsTableViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*WeatherManager.sharedInstance.getWeatherForNext3days("1260607",successHandler: {forecasts in
-            },failureHandler: { message in
-            print(message)
-        })*/
         sectionCounts = [Int](count: faqsManager.faqs.count, repeatedValue: 0)
     }
 
@@ -39,9 +37,31 @@ class FaqsTableViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FaqCell")
-        cell?.textLabel?.text = faqsManager.faqs[indexPath.section].description
-        cell?.textLabel?.numberOfLines = 0
-        cell?.textLabel?.lineBreakMode = .ByWordWrapping
+        let faq = faqsManager.faqs[indexPath.section]
+        switch faq.type {
+        case FaqType.Weather :
+            cell?.textLabel?.text = "Weather Forecast"
+            if let forecasts = sectionData[indexPath.section] as? [Forecast]{
+                let forecast = forecasts[indexPath.row]
+                cell?.textLabel?.text = forecast.formattedText
+                
+            }
+            
+        default:
+            let text = faqsManager.faqs[indexPath.section].description
+            let data = text!.dataUsingEncoding(NSUTF8StringEncoding)
+            do {
+                let formattedText = try NSAttributedString(data:data! , options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+                cell?.textLabel?.attributedText = formattedText
+                cell?.textLabel?.font = UIFont(name: "Helvetica", size: 15)
+                cell?.textLabel?.textAlignment = .Justified
+            } catch {
+                print(error)
+            }
+            cell?.textLabel?.numberOfLines = 0
+            cell?.textLabel?.lineBreakMode = .ByWordWrapping
+        }
+        
         
         return cell!
     }
@@ -69,16 +89,62 @@ class FaqsTableViewController : UITableViewController {
         print("Info clicked \(sender.tag)")
         
         let section = sender.tag
-        tableView.beginUpdates()
-        if sectionCounts[section] == 0  {
-            sectionCounts[section] = sectionCounts[section] + 1
-            tableView.insertRowsAtIndexPaths([NSIndexPath(forItem:0, inSection: section)], withRowAnimation: UITableViewRowAnimation(rawValue: 0)! )
+
+        let faq = faqsManager.faqs[section]
+        switch faq.type {
+        case FaqType.QAndA :
+            tableView.beginUpdates()
+            if sectionCounts[section] == 0  {
+                sectionCounts[section] = sectionCounts[section] + 1
+                tableView.insertRowsAtIndexPaths([NSIndexPath(forItem:0, inSection: section)], withRowAnimation: UITableViewRowAnimation(rawValue: 0)! )
             
-        } else {
-            sectionCounts[section] = sectionCounts[section] - 1
-            tableView.deleteRowsAtIndexPaths([NSIndexPath(forItem:0, inSection: section)], withRowAnimation: UITableViewRowAnimation(rawValue: 0)!)
+            } else {
+                sectionCounts[section] = sectionCounts[section] - 1
+                tableView.deleteRowsAtIndexPaths([NSIndexPath(forItem:0, inSection: section)], withRowAnimation: UITableViewRowAnimation(rawValue: 0)!)
+            }
+            tableView.endUpdates()
+        case FaqType.Weather:
+            if sectionCounts[section] == 0  {
+                if let forecasts = sectionData[section] as? [Forecast]{
+                    sectionCounts[section] = forecasts.count
+                    tableView.beginUpdates()
+                    var indexPaths = [NSIndexPath]()
+                    for index in 0..<forecasts.count {
+                        indexPaths.append(NSIndexPath(forItem:index, inSection: section))
+                    }
+                    tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation(rawValue: 0)! )
+                    tableView.endUpdates()
+                } else {
+                    WeatherManager.sharedInstance.getWeatherForNext3days(faq.cityId!,successHandler: {forecasts in
+                        self.sectionCounts[section] = forecasts.count
+                        self.sectionData[section] = forecasts
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.tableView.beginUpdates()
+                            var indexPaths = [NSIndexPath]()
+                            for index in 0..<forecasts.count {
+                                indexPaths.append(NSIndexPath(forItem:index, inSection: section))
+                            }
+                            self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation(rawValue: 0)! )
+                            self.tableView.endUpdates()
+                
+                        })
+                },failureHandler: { message in
+                    print(message)
+                    })
+                }
+            } else {
+                sectionCounts[section] = 0
+                if let forecasts = sectionData[section] as? [Forecast]{
+                    self.tableView.beginUpdates()
+                    var indexPaths = [NSIndexPath]()
+                    for index in 0..<forecasts.count {
+                        indexPaths.append(NSIndexPath(forItem:index, inSection: section))
+                    }
+                    self.tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation(rawValue: 0)! )
+                    self.tableView.endUpdates()
+                }
+            }
         }
-        tableView.endUpdates()
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -89,13 +155,22 @@ class FaqsTableViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if sectionCounts[indexPath.section] == 0  {
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
-        } else {
-            let font = UIFont(name: "Helvetica", size: 15)
-            let height = heightForView(faqsManager.faqs[indexPath.section].description, font: font!, width: self.view.frame.width)
-            return height
+        let faq = faqsManager.faqs[indexPath.section]
+        
+        switch faq.type {
+        case FaqType.QAndA:
+            if sectionCounts[indexPath.section] == 0  {
+                return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+            } else {
+                let font = UIFont(name: "Helvetica", size: 15)
+                let height = heightForView(faqsManager.faqs[indexPath.section].description!, font: font!, width: self.view.frame.width)
+                return height
+            }
+        case FaqType.Weather:
+            return 20
         }
+        
+        
     }
     
     //MARK: UI Helper methods

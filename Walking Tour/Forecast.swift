@@ -35,4 +35,8 @@ struct Forecast {
         }
         unit = "C"
     }
+    
+    var formattedText:String {
+        return "\(dateString)      \(maxTemp) \(unit)   \(minTemp) \(unit)      \(message)"
+    }
 }

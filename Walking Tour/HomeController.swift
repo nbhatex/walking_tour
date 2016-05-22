@@ -17,9 +17,10 @@ class HomeController: UIViewController {
 
         let walks = WalkManager.sharedInstance.getWalks()
         if !walks.isEmpty {
-            currentWalk.setTitle(walks.first?.name, forState: .Normal)
+            let walk = walks.first!
+            currentWalk.setTitle(walk.name, forState: .Normal)
             let standardDefaults = NSUserDefaults.standardUserDefaults()
-            
+            standardDefaults.setObject(walk.id, forKey: "CurrentWalkId")
         }
     }
 

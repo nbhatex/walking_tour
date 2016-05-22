@@ -46,7 +46,10 @@ class MapController:UIViewController, MKMapViewDelegate {
     }
     
     func addPlaceAnnotations() {
-        let places = geoDataManager.getPlaces();
+        /*let standardDefaults = NSUserDefaults.standardUserDefaults()
+        let walkId = standardDefaults.valueForKey("CurrentWalkId") as? String
+        let places = WalkManager.sharedInstance.getWalk(walkId!)?.places*/
+        let places = GeoDataManager.sharedInstance.getPlaces()
         var annotations = [MKPointAnnotation]()
         for place in places {
             let annotation = PlaceAnnotation(id: Int(place.id))

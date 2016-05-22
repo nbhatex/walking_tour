@@ -24,6 +24,7 @@ class GeoDataManager {
                 let placeDictionaries = parsedData as! [[String:AnyObject]]
                 for placeDictionary in placeDictionaries {
                     let place = Place(dictionary: placeDictionary,context: sharedContext)
+                    place.walk = walk
                     places.append(place)
                 }
                 walk.places = NSOrderedSet(array: places)
