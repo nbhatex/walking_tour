@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+    <entity name="Content" representedClassName=".Content" syncable="YES">
+        <attribute name="explaination" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="seqno" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="content" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="walk" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Walk" inverseName="contents" inverseEntity="Walk" syncable="YES"/>
+    </entity>
+    <entity name="Coordinate" representedClassName=".Coordinate" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="seqno" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Photo" representedClassName=".Photo" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="content" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Content" inverseName="photos" inverseEntity="Content" syncable="YES"/>
+    </entity>
+    <entity name="Place" representedClassName=".Place" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="seqno" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="pathToNextPlace" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Coordinate" syncable="YES"/>
+        <relationship name="walk" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Walk" inverseName="places" inverseEntity="Walk" syncable="YES"/>
+    </entity>
+    <entity name="Walk" representedClassName=".Walk" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Content" inverseName="walk" inverseEntity="Content" syncable="YES"/>
+        <relationship name="places" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Place" inverseName="walk" inverseEntity="Place" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Content" positionX="-54" positionY="45" width="128" height="135"/>
+        <element name="Coordinate" positionX="-63" positionY="27" width="128" height="90"/>
+        <element name="Photo" positionX="-63" positionY="36" width="128" height="90"/>
+        <element name="Place" positionX="-54" positionY="-9" width="128" height="135"/>
+        <element name="Walk" positionX="-63" positionY="-18" width="128" height="105"/>
+    </elements>
+</model>

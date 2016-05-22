@@ -8,17 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		4E020DEB1CEA115F002CBB3B /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E020DEA1CEA115F002CBB3B /* Forecast.swift */; };
+		4E057A781CF0817C006ABA5F /* TestLocations.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E057A771CF0817C006ABA5F /* TestLocations.gpx */; };
+		4E057A7B1CF0927E006ABA5F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E057A791CF0927E006ABA5F /* Model.xcdatamodeld */; };
+		4E057A7D1CF09817006ABA5F /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E057A7C1CF09817006ABA5F /* CoreDataStackManager.swift */; };
+		4E057A801CF09A29006ABA5F /* Walk+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E057A7E1CF09A29006ABA5F /* Walk+CoreDataProperties.swift */; };
+		4E057A811CF09A29006ABA5F /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E057A7F1CF09A29006ABA5F /* Walk.swift */; };
+		4E057A831CF0A06A006ABA5F /* WalkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E057A821CF0A06A006ABA5F /* WalkManager.swift */; };
 		4E06EED71CDCD82C00AA29C0 /* FaqManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06EED61CDCD82C00AA29C0 /* FaqManager.swift */; };
 		4E06EED91CDCD8B300AA29C0 /* Faq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06EED81CDCD8B300AA29C0 /* Faq.swift */; };
 		4E06EEDB1CDCD97F00AA29C0 /* FaqsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06EEDA1CDCD97F00AA29C0 /* FaqsTableViewController.swift */; };
-		4E08762E1CF0707900890E76 /* TestLocations.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E08762D1CF0707800890E76 /* TestLocations.gpx */; };
-		4E0876301CF0711C00890E76 /* TestLocations.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E08762F1CF0711C00890E76 /* TestLocations.gpx */; };
 		4E0A67111CDF60FB002A81F6 /* PlaceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A67101CDF60FB002A81F6 /* PlaceListCell.swift */; };
 		4E114D321CDA462A0049002A /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E114D311CDA462A0049002A /* ContentManager.swift */; };
 		4E1547271CD96FAC00008C10 /* GeoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1547261CD96FAC00008C10 /* GeoDataManager.swift */; };
 		4E1547291CD9705A00008C10 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1547281CD9705A00008C10 /* Place.swift */; };
 		4E2716791CD623AA0062A7AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2716781CD623AA0062A7AD /* AppDelegate.swift */; };
-		4E27167B1CD623AA0062A7AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E27167A1CD623AA0062A7AD /* ViewController.swift */; };
+		4E27167B1CD623AA0062A7AD /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E27167A1CD623AA0062A7AD /* HomeController.swift */; };
 		4E27167E1CD623AA0062A7AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E27167C1CD623AA0062A7AD /* Main.storyboard */; };
 		4E2716801CD623AA0062A7AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E27167F1CD623AA0062A7AD /* Assets.xcassets */; };
 		4E2716831CD623AA0062A7AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E2716811CD623AA0062A7AD /* LaunchScreen.storyboard */; };
@@ -26,6 +30,7 @@
 		4E2716991CD623AA0062A7AD /* Walking_TourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2716981CD623AA0062A7AD /* Walking_TourUITests.swift */; };
 		4E4B04931CDB857E008EBF29 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4B04921CDB857E008EBF29 /* PlaceViewController.swift */; };
 		4E4B04951CDB8792008EBF29 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4B04941CDB8792008EBF29 /* SplitViewController.swift */; };
+		4E4BB6D41CF1731700514683 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4BB6D31CF1731700514683 /* Colors.swift */; };
 		4E50EB5D1CD6F4F4004BBF3A /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E50EB5C1CD6F4F4004BBF3A /* MapController.swift */; };
 		4E54139C1CD9A0110051CA84 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54139B1CD9A0110051CA84 /* Coordinate.swift */; };
 		4E5471061CE1550200BC4678 /* PlaceImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5471051CE1550200BC4678 /* PlaceImageCell.swift */; };
@@ -56,18 +61,22 @@
 
 /* Begin PBXFileReference section */
 		4E020DEA1CEA115F002CBB3B /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		4E057A771CF0817C006ABA5F /* TestLocations.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestLocations.gpx; sourceTree = "<group>"; };
+		4E057A7A1CF0927E006ABA5F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		4E057A7C1CF09817006ABA5F /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		4E057A7E1CF09A29006ABA5F /* Walk+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Walk+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4E057A7F1CF09A29006ABA5F /* Walk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
+		4E057A821CF0A06A006ABA5F /* WalkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkManager.swift; sourceTree = "<group>"; };
 		4E06EED61CDCD82C00AA29C0 /* FaqManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaqManager.swift; sourceTree = "<group>"; };
 		4E06EED81CDCD8B300AA29C0 /* Faq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Faq.swift; sourceTree = "<group>"; };
 		4E06EEDA1CDCD97F00AA29C0 /* FaqsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaqsTableViewController.swift; sourceTree = "<group>"; };
-		4E08762D1CF0707800890E76 /* TestLocations.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestLocations.gpx; sourceTree = "<group>"; };
-		4E08762F1CF0711C00890E76 /* TestLocations.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TestLocations.gpx; path = "Walking Tour/TestLocations.gpx"; sourceTree = "<group>"; };
 		4E0A67101CDF60FB002A81F6 /* PlaceListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceListCell.swift; sourceTree = "<group>"; };
 		4E114D311CDA462A0049002A /* ContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 		4E1547261CD96FAC00008C10 /* GeoDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoDataManager.swift; sourceTree = "<group>"; };
 		4E1547281CD9705A00008C10 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		4E2716751CD623AA0062A7AD /* Walking Tour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Walking Tour.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E2716781CD623AA0062A7AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4E27167A1CD623AA0062A7AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4E27167A1CD623AA0062A7AD /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		4E27167D1CD623AA0062A7AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E27167F1CD623AA0062A7AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E2716821CD623AA0062A7AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,6 +89,7 @@
 		4E27169A1CD623AA0062A7AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E4B04921CDB857E008EBF29 /* PlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		4E4B04941CDB8792008EBF29 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		4E4BB6D31CF1731700514683 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4E50EB5C1CD6F4F4004BBF3A /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		4E54139B1CD9A0110051CA84 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		4E5471051CE1550200BC4678 /* PlaceImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceImageCell.swift; sourceTree = "<group>"; };
@@ -119,6 +129,8 @@
 		4E0A670F1CDF5FAB002A81F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4E057A7E1CF09A29006ABA5F /* Walk+CoreDataProperties.swift */,
+				4E057A7F1CF09A29006ABA5F /* Walk.swift */,
 				4E06EED81CDCD8B300AA29C0 /* Faq.swift */,
 				4E06EED61CDCD82C00AA29C0 /* FaqManager.swift */,
 				4E1547261CD96FAC00008C10 /* GeoDataManager.swift */,
@@ -129,6 +141,7 @@
 				4E6FE4931CDA653B004A0466 /* Content.swift */,
 				4E8E8D3D1CE8CC6600D2286A /* WaetherManager.swift */,
 				4E020DEA1CEA115F002CBB3B /* Forecast.swift */,
+				4E057A821CF0A06A006ABA5F /* WalkManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -136,7 +149,7 @@
 		4E27166C1CD623AA0062A7AD = {
 			isa = PBXGroup;
 			children = (
-				4E08762F1CF0711C00890E76 /* TestLocations.gpx */,
+				4E057A771CF0817C006ABA5F /* TestLocations.gpx */,
 				4E2716771CD623AA0062A7AD /* Walking Tour */,
 				4E27168C1CD623AA0062A7AD /* Walking TourTests */,
 				4E2716971CD623AA0062A7AD /* Walking TourUITests */,
@@ -158,7 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				4E2716781CD623AA0062A7AD /* AppDelegate.swift */,
-				4E27167A1CD623AA0062A7AD /* ViewController.swift */,
+				4E27167A1CD623AA0062A7AD /* HomeController.swift */,
+				4E057A7C1CF09817006ABA5F /* CoreDataStackManager.swift */,
 				4E27167C1CD623AA0062A7AD /* Main.storyboard */,
 				4E27167F1CD623AA0062A7AD /* Assets.xcassets */,
 				4E2716811CD623AA0062A7AD /* LaunchScreen.storyboard */,
@@ -173,7 +187,8 @@
 				4E5471051CE1550200BC4678 /* PlaceImageCell.swift */,
 				4E6BAF2B1CE3A00900A67BC0 /* PlaceAnnotation.swift */,
 				4E6E99871CEE987C004CBB54 /* LocationManager.swift */,
-				4E08762D1CF0707800890E76 /* TestLocations.gpx */,
+				4E057A791CF0927E006ABA5F /* Model.xcdatamodeld */,
+				4E4BB6D31CF1731700514683 /* Colors.swift */,
 			);
 			path = "Walking Tour";
 			sourceTree = "<group>";
@@ -302,8 +317,7 @@
 			files = (
 				4E2716831CD623AA0062A7AD /* LaunchScreen.storyboard in Resources */,
 				4E2716801CD623AA0062A7AD /* Assets.xcassets in Resources */,
-				4E08762E1CF0707900890E76 /* TestLocations.gpx in Resources */,
-				4E0876301CF0711C00890E76 /* TestLocations.gpx in Resources */,
+				4E057A781CF0817C006ABA5F /* TestLocations.gpx in Resources */,
 				4E27167E1CD623AA0062A7AD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,7 +343,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E27167B1CD623AA0062A7AD /* ViewController.swift in Sources */,
+				4E057A811CF09A29006ABA5F /* Walk.swift in Sources */,
+				4E27167B1CD623AA0062A7AD /* HomeController.swift in Sources */,
 				4E1547291CD9705A00008C10 /* Place.swift in Sources */,
 				4E50EB5D1CD6F4F4004BBF3A /* MapController.swift in Sources */,
 				4E5471061CE1550200BC4678 /* PlaceImageCell.swift in Sources */,
@@ -338,6 +353,8 @@
 				4E2716791CD623AA0062A7AD /* AppDelegate.swift in Sources */,
 				4E6FE4961CDA67B2004A0466 /* PlaceListController.swift in Sources */,
 				4E4B04951CDB8792008EBF29 /* SplitViewController.swift in Sources */,
+				4E4BB6D41CF1731700514683 /* Colors.swift in Sources */,
+				4E057A7B1CF0927E006ABA5F /* Model.xcdatamodeld in Sources */,
 				4E06EED91CDCD8B300AA29C0 /* Faq.swift in Sources */,
 				4E06EEDB1CDCD97F00AA29C0 /* FaqsTableViewController.swift in Sources */,
 				4E6BAF2C1CE3A00900A67BC0 /* PlaceAnnotation.swift in Sources */,
@@ -345,10 +362,13 @@
 				4E1547271CD96FAC00008C10 /* GeoDataManager.swift in Sources */,
 				4E54139C1CD9A0110051CA84 /* Coordinate.swift in Sources */,
 				4E4B04931CDB857E008EBF29 /* PlaceViewController.swift in Sources */,
+				4E057A831CF0A06A006ABA5F /* WalkManager.swift in Sources */,
 				4E06EED71CDCD82C00AA29C0 /* FaqManager.swift in Sources */,
 				4E6E99881CEE987C004CBB54 /* LocationManager.swift in Sources */,
 				4E114D321CDA462A0049002A /* ContentManager.swift in Sources */,
 				4E8E8D3E1CE8CC6600D2286A /* WaetherManager.swift in Sources */,
+				4E057A7D1CF09817006ABA5F /* CoreDataStackManager.swift in Sources */,
+				4E057A801CF09A29006ABA5F /* Walk+CoreDataProperties.swift in Sources */,
 				4E0A67111CDF60FB002A81F6 /* PlaceListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +615,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4E057A791CF0927E006ABA5F /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4E057A7A1CF0927E006ABA5F /* Model.xcdatamodel */,
+			);
+			currentVersion = 4E057A7A1CF0927E006ABA5F /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4E27166D1CD623AA0062A7AD /* Project object */;
 }

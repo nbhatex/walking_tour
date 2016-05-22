@@ -2,16 +2,19 @@
   {
     "id": 349,
     "title": "History of Panjim",
+    "poi_id": 0,
     "description": "Our walking tour starts just outside the Panjim bus stand. <p>Welcome to the city of Panajim. Panjim or \"the land that never floods\" was originally a small fishing village abounding in coconut groves, creeks and fields. Originally a ward of Taleigao village it so enamored Adil Shah that he built his summer palace on the bank of the Mandovi river, which later became the Government Secretariat.</p> <p>Panjim or 'New Goa' gained importance in the 1820s, after it replaced Old Goa as the administrative seat for the Portuguese government. It's architectural styles, with its Latin influences, like the overhanging verandahs, courtyards, sheltered porches, balconies and high roofs make it a unique city. Structures are often painted in indigo, ochre and terracotta and white is usually reserved for churches and chapels.</p> <p>Panjim is flanked by the river Mandovi on the North, and the hillock of Altinho on the south. It includes old quarters like Fontainhas as well as the modern Patto Plaza it's corporate district. It is one of the best-planned cities in the country thanks to the noted engineer Luis A de Maravilhas, among others. A neat grid of broad avenues and connecting roads, footpaths with provisions for tree planting, a good sewage system, gardens and sedate architecture with Latin influences, earn it the sobriquet of 'Princess of the Mandovi'</p> <p>More than 170 years old, Panjim has evolved from a sandy, swampy coconut grove into an individualistic modern city yet, retaining its quaint old-world charm.</p>",
   },
   {
     "id": 305,
     "title": "Old Patto bridge",
+    "poi_id": 1,
     "description": "Our first stop is the old Patto bridge. This bridge was built it in 1632 i.e. its more than 450 years old. It was built using locally available laterite stone after hardening the soil below using wooden logs. It was actually extension of the Ponte De Linhares which connected Panjim to Ribandar. After the liberation it came to know as Patto Bridge and the area around it is Patto. There is new Patto Bridge which got constructed much later."
   },
   {
     "id": 306,
     "title": "Temple on old Patto bridge",
+    "poi_id": 2,
     "description": "Known as the temple of Rakanda(Guard) of Panjim, is the local guardian of the area. You will see lot of people offering Pav(form of Bread), Beedi(Tobacco rolled in leaf) and banana and lighting candles.",
     "images": [
       { "title": "Praying at Rakanda Temple", "resourceId": "bridge_temple" }
@@ -20,6 +23,7 @@
   {
     "id": 310,
     "title": "Casa da Moeda",
+    "poi_id": 3,
     "description": "<p> Casa Da Moeda literally means <b>House of Coins</b> in Portuguese. The Viceroy of Goa, unhappy with the quality of coins minted in Old Goa ordered the mint to be shifted to New Goa. It stands in the Post Office Square, between the Post Office and the Mandovi river. Coins were minted here for seven years between 1834-1841 after which it was moved to the arsenal in Panjim. In 1870, coins were requisitioned from the Bombay Mint and in 1878, all existing coinage became obsolete.</p> <p>In 1963, Casa Da Moeda was sold to Antonia Inacio Da Silva. It was then rented to the British Telegraph briefly before it was sold to the Dias family in 1904, which are the present owners. It was one of the few buildings in India that was occupied by both the British and Portuguese.</p><p>The tiled roof, attic windows, wooden verandah and yellow arches evoke a bygone era. The building is raised off the ground and supported by masonry arches, which were built in the 1800s. It's high ceiling, Dutch doors, wooden floors and fragile window panes make it a marvel of architecture and antiquity.</p><p>A festival of art and literature is organized regularly by the Dias family, to commemorate more than 175 years of Casa Da Moeda.</p>",
     "images": [
       { "title": "Casa Da Moeda", "resourceId": "casa_da_moeda_2" },
@@ -29,6 +33,7 @@
   {
     "id": 314,
     "title": "M C Dias",
+    "poi_id": 4,
     "description": "Miguel Caetano Dias, (9 July 1854 - 26 July 1936) was a Goan medical doctor. From humble beginnings, he occupied post of Chief of Health Services. He did a commendable job when Panaji was affected by bubonic plague in 1908.",
     "images": [
       { "title": "Statue of M C Dias", "resourceId": "m_c_dias" }
@@ -37,6 +42,7 @@
   {
     "id": 316,
     "title": "Head Post Office",
+    "poi_id": 5,
     "description": "<p>The Head Post office is a brightly colored red and white bungalow, which dominates the Tobacco square, over-looking the Mandovi river. It is located in the Sao Tome ward that lies north to Fontainhas.</p><p>It was originally a depot for trading tobacco. The Portuguese brought tobacco to the Indian subcontinent 200 years before the British. It was used as a police headquarters briefly before it was turned into the Head Post Office in 1854. Mail was routed through Bombay with British India stamps, which were available in Goa. In 1871, the Portuguese issued the first Portugal stamps for use within the colony and continued issuing stamps till 1960. From 1877, the words 'India Post' or 'Servico Postal' was included on its service.</p>",
     "images": [
       { "title": "Head Post Office", "resourceId": "post_office" }
@@ -45,6 +51,7 @@
   {
     "id": 319,
     "title": "Sao Tome Chapel",
+    "poi_id": 6,
     "description": "<p>In the corner of the Tobacco Square in Fontainhas, is an elegant white chapel dedicated to St. Thomas. In Goa, St. Thomas is the patron saint of architects and builders. and the area was initially full of artisans.</p><p>More than 400 years old, the original chapel was built in 1814, just a little distance from the present one. The new chapel, in its current location took four years to build and was blessed on July 8th, 1849. There have been several renovations over the years. It was re-opened in 1961, in the last year of Portuguese rule in Goa.</p><p>In front of the chapel was the town pillory, which was a device similar to the 'stocks' for punishment and public humiliation of the erring. It was made of a wooden or metal framework erected on a post, with holes for securing the head and hands. The offender had to bend forward and stick his head and hands forward in a most uncomfortable manner. Sometimes a placard detailing the nature of the crime was placed next to it. People would gather around it to taunt, tease and laugh at the offender. </p>",
     "images": [
       { "title": "Sao Thome Chapel", "resourceId": "sao_thome_chapel" }
@@ -53,6 +60,7 @@
   {
     "id": 325,
     "title": "Shree Mahalaxmi Prassadik Hindu Vachan Mandir",
+    "poi_id": 7,
     "description": "In a quiet lane in Fontainhas, is a single-storied yellow and white structure that still retains its old world charm. This tiny, government aided library was the first public library in Panjim. Started by a social activist Nanu Pednekar, the Shree Mahalaxmi Prassadik Hindu Vachan Mandir library is more than a hundred years old. The road leading up to the spring of Fonte Phoenix is named in honor of him.",
     "images": [
       { "title": "Oldest library", "resourceId": "vachana_bandar" }
@@ -61,6 +69,7 @@
   {
     "id": 328,
     "title": "Chapel of St. Sebastian",
+    "poi_id": 8,
     "description": "In 1818, a small chapel was built to cater to the spiritual needs of the residents of the new settlement of Fontainhas. It is an important landmark that dominates the Fontainhas area. The right wing of the chapel houses a striking life-size crucifix, which once hung in the Palace of the Inquisition in Old Goa and was used in the processions, preceding the sitting of the Tribunal of the Inquisition. This statue is considered unusual as the image of Christ has its eyes wide open and was believed to be created, to instill fear in the minds of those being interrogated by the Inquisitors. It contains historic images and relics from other churches and convents around Goa, which, due to suppression of the religious orders from the Portuguese government, were demolished or shut down. The intricate woodwork on the alters are a study in craftsmanship. ",
     "images": [
       { "title": "Chapel of St. Sebastian", "resourceId": "st_sebastian_chapel" }
@@ -69,11 +78,13 @@
   {
     "id": 330,
     "title": "The 31st January road ",
+    "poi_id": 9,
     "description": "The 31st January road or Rua 31 de Janeira commemorates the historic liberation of Portugal from Spain on 31 January, 1640. It was on this day that Spanish rule was overthrown in a Bloodless coup and the Duke  of Braganca was proclaimed as the King of Portugal with the title King John IV. This Street is filled with wax merchants, petty tradesmen and wine merchants. When settlers from up the river Mandovi first occupied Panaji, this street was given to bakers, candle-makers and wine merchants."
   },
   {
     "id": 332,
     "title": "Panjim Inn",
+    "poi_id": 10,
     "description": "<p> A place replete with character and romance, The Panjim Inn is Goa's first Classified Heritage Hotel and the ideal stopping place for the discerning traveler.</p><p>One of the classic bungalows from the 1800s, it is surrounded by quaint by-lanes, Portuguese style old villas and portals. It's a welcome respite from the busy world outside and a perfect way to sample the flavor of the Latin Quarter. Located in the heart of Fontainhas, Panjim, it's a 10-minute walk from the city centre and a perfect place to explore the area and Panjim as well.</p><p>Panjim Inn is a perfect blend of old-world charm and modernity, with its period furniture, antique interiors, exotic art and fine furnishing. It offers good service and comfortable rooms in a relaxed atmosphere. Local and Continental cuisines of the region can be sampled in it's in-house restaurant 'The Verandah Restaurant'. It also houses an art gallery 'Gallery Gitanjali', which showcases a range of contemporary art by well-known local artists and others.</p><p>Panjim Inn is part of the Welcomheritage Panjim Inn Group companies. The other two hotels are Panjim Pousada, a Hindu style residence hotel and Panjim Peoples, which was once Goa's first English school.</p>",
     "images": [
       { "title": "Panjim Inn from road", "resourceId": "panjim_inn" }
@@ -82,11 +93,13 @@
   {
     "id": 334,
     "title": "Peoples High School",
+    "poi_id": 11,
     "description": "Peoples High School, established in 1936. Your next stop should be in the direction of the yellow house with a sign on the front door saying B. CORREA. Look up at the wooden railings on the first floor with their white floral motifs. One should remember that each floral motif would have seven (and not eight) petals as seven is considered the ideologically auspicious number in Goa. Do take a look at its moulded roof as you head towards the building that houses the office of the Delegate, Fundacao Oriente. "
   },
   {
     "id": 335,
     "title": "Fundacao Oriente",
+    "poi_id": 12,
     "description": "This is the office of a cultural institution based in Lisbon with activities spanning publication of books, music concerts art exhibitions and architectural conservation. Drop in and see if there are any on-going programmes that you might like to attend. Passes are usually available on request.",
     "images": [
       { "title": "Fundaco Oriente", "resourceId": "fundaco_oriente_2" },
@@ -96,6 +109,7 @@
   {
     "id": 347,
     "title": "Fonte Phoenix",
+    "poi_id": 13,
     "description": "<p>'Fonte Phoenix' is an ancient, natural spring of crystalline water at the foot of Marutigad of the Altinho hillock. Till mid-18th century this area was alluvial soil with a few paddy fileds. A wealthy gentleman Antonio Joao de sequira nicknamed 'Mossmikar' as he had returned from the Portuguese colony of Mozambique bought the land and leveled it for a coconut grove. It was called 'Palmeira Ponte' literally meaning 'bridge coconut grove'.</p><p>An artistic structure of basalt stone was constructed around the natural spring in the 1850s, during the tenure of the Portuguese Governor, Viscount of Ourem, Joaquim Jose Januario Lapa.</p><p>It provided three taps of potable drinking water to the new settlement of Fontainhas and the rest of the city of Panjim.</p><p>The Hindu residential area of the precinct has families like the Agshikars, Hodarkars, Pissurlenkars, Shirodkars, Shankwalkars, etc. who have lived there since the Portuguese times. So also Christian families like the Mirandas, Lopes, Saldanhas, Costas, Gonsalves, Dias, Rego, Menezes, Machados, Ribeiros and others have made Fontainhas their home.</p>",
     "images": [
       { "title": "Fonte Phoenix", "resourceId": "fonte_phoenix" }

@@ -26,25 +26,26 @@ class PlaceViewController:UIViewController, PlaceSelectionDelegate, UIScrollView
         if let placeContent = content {
             placeSelected(placeContent)
         } else {
-            if let firstContent = ContentManager.sharedInstance.contents.first {
+            if let firstContent = ContentManager.sharedInstance.getContents().first {
                 placeSelected(firstContent)
             }
         }
         descriptionText.textContainerInset = UIEdgeInsetsMake(0, 20, 20, 20)
         imageScrollView.delegate = self
-        self.automaticallyAdjustsScrollViewInsets = false
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         imageScrollView.pagingEnabled = true
+        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     func placeSelected(newContent: Content) {
-        descriptionText.text = newContent.description
+        descriptionText.text = newContent.explaination
         pageControl.hidden = true
         imageScrollView.subviews.map { $0.removeFromSuperview() }
-        if newContent.photos.isEmpty {
+        if newContent.photos.count == 0 {
             scrollViewHeight.constant = 0
             return
         }

@@ -8,41 +8,61 @@
 
 import Foundation
 import MapKit
+import CoreData
 
-class Place {
-    var id:Int
-    var longitude:Double
-    var latitude:Double
+class Place: NSManagedObject {
+    @NSManaged var id:NSNumber
+    @NSManaged var longitude:NSNumber
+    @NSManaged var latitude:NSNumber
+    @NSManaged var seqno:NSNumber
     
-    var pathToNextPlace:[Coordinate]
+    @NSManaged var pathToNextPlace:NSOrderedSet
     
-    init(dictionary:[String:AnyObject]) {
-        if let lat = dictionary["latitude"] as? Double {
-            latitude = lat
-        } else {
-            latitude = 0.0
-        }
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
+    init(dictionary:[String:AnyObject],context: NSManagedObjectContext) {
+        
+        let entity = NSEntityDescription.entityForName("Place", inManagedObjectContext: context)
+        super.init(entity: entity!,insertIntoManagedObjectContext:context)
+      
         if let lng = dictionary["longitude"] as? Double {
             longitude = lng
         } else {
             longitude = 0.0
         }
-        pathToNextPlace = [Coordinate]()
+        if let lat = dictionary["latitude"] as? Double {
+            latitude = lat
+        } else {
+            latitude = 0.0
+        }
+
+        //pathToNextPlace = NSOrderedSet()
+        var coordinates = [Coordinate]()
         if let points = dictionary["pathToNextPOI"] as? [[String:AnyObject]] {
             for point in points {
-                let coordinate = Coordinate(dictionary: point)
-                pathToNextPlace.append(coordinate)
+                let coordinate = Coordinate(dictionary: point,context: context)
+                coordinates.append(coordinate)
             }
         }
+        pathToNextPlace = NSOrderedSet(array: coordinates)
+        
         if let placeId = dictionary["id"] as? Int {
             id = placeId
         } else {
             id = -1
         }
+        
+        if let sequenceNo = dictionary["poi_id"] as? Int {
+            seqno = sequenceNo
+        } else {
+            seqno = 1
+        }
     }
     
     var coordinate : CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude:latitude, longitude:longitude)
+        return CLLocationCoordinate2D(latitude:Double(latitude), longitude:Double(longitude))
     }
     
 

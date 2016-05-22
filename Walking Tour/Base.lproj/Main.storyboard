@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Walking_Tour" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeController" customModule="Walking_Tour" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -31,7 +31,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Et6-Do-qq3" kind="show" identifier="StartWalk" action="showDetailViewController:sender:" id="CSC-NB-bPF"/>
+                                    <segue destination="Et6-Do-qq3" kind="show" identifier="StartWalk" id="5Pn-py-Glr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Yl-XX-Rvf">
@@ -66,6 +66,20 @@
                                     <segue destination="zVp-WF-8qB" kind="show" id="Zy3-l4-RO4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="728-vk-gOm">
+                                <rect key="frame" x="250" y="127" width="100" height="34"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="5" maxX="20" maxY="5"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -75,9 +89,11 @@
                             <constraint firstItem="4Yl-XX-Rvf" firstAttribute="leading" secondItem="K5k-Jo-mgz" secondAttribute="leading" id="CJ6-AE-zvA"/>
                             <constraint firstItem="4Yl-XX-Rvf" firstAttribute="leading" secondItem="Ky9-5A-Vf6" secondAttribute="leading" id="DJC-VL-NKd"/>
                             <constraint firstItem="Ky9-5A-Vf6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-35" id="WP8-kj-FH0"/>
+                            <constraint firstItem="728-vk-gOm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wp5-Le-L7r"/>
                             <constraint firstItem="4Yl-XX-Rvf" firstAttribute="width" secondItem="K5k-Jo-mgz" secondAttribute="width" id="che-SP-HdV"/>
                             <constraint firstItem="4Yl-XX-Rvf" firstAttribute="top" secondItem="K5k-Jo-mgz" secondAttribute="bottom" constant="8" symbolic="YES" id="gds-UB-ABA"/>
                             <constraint firstItem="4Yl-XX-Rvf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="izC-Lr-61o"/>
+                            <constraint firstItem="728-vk-gOm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="63" id="kgB-8Y-IAh"/>
                             <constraint firstItem="Ky9-5A-Vf6" firstAttribute="top" secondItem="4Yl-XX-Rvf" secondAttribute="bottom" constant="13" id="lMV-UM-yXK"/>
                             <constraint firstItem="4Yl-XX-Rvf" firstAttribute="trailing" secondItem="K5k-Jo-mgz" secondAttribute="trailing" id="m9E-Zd-98e"/>
                             <constraint firstItem="4Yl-XX-Rvf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="256" id="nBr-OZ-709"/>
@@ -97,6 +113,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="9TT-pa-u3P"/>
+                    <connections>
+                        <outlet property="currentWalk" destination="728-vk-gOm" id="ZKQ-gI-E8j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

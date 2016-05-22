@@ -8,19 +8,29 @@
 
 import Foundation
 import MapKit
+import CoreData
 
-struct Coordinate {
-    var latitude:Double
-    var longitude:Double
-    var seqno:Int
+class Coordinate:NSManagedObject {
+    @NSManaged var latitude:NSNumber
+    @NSManaged var longitude:NSNumber
+    @NSManaged var seqno:NSNumber
     
-    init(latitude:Double,longitude:Double,seqno:Int){
+    /*init(latitude:Double,longitude:Double,seqno:Int){
+        super.init()
         self.latitude = latitude
         self.longitude = longitude
         self.seqno = seqno
+    }*/
+    
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
-    init(dictionary:[String:AnyObject]) {
+    init(dictionary:[String:AnyObject], context:NSManagedObjectContext) {
+        
+        let entity = NSEntityDescription.entityForName("Coordinate", inManagedObjectContext: context)
+        super.init(entity: entity!,insertIntoManagedObjectContext:context)
+        
         if let lat = dictionary["latitude"] as? Double {
             latitude = lat
         } else {
@@ -40,6 +50,6 @@ struct Coordinate {
     }
     
     var coordinate : CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude:latitude, longitude:longitude)
+        return CLLocationCoordinate2D(latitude:Double(latitude), longitude:Double(longitude))
     }
 }

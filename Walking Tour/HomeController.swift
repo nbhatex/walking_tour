@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController {
+class HomeController: UIViewController {
 
+    @IBOutlet weak var currentWalk: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-                
+
+        let walks = WalkManager.sharedInstance.getWalks()
+        if !walks.isEmpty {
+            currentWalk.setTitle(walks.first?.name, forState: .Normal)
+            let standardDefaults = NSUserDefaults.standardUserDefaults()
+            
+        }
     }
 
 
@@ -27,7 +33,10 @@ class ViewController: UIViewController {
                 }
             }
             
+        } else {
+            LocationManager.sharedInstance.clearLocationData()
         }
     }
+
 }
 

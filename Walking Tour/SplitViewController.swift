@@ -11,10 +11,14 @@ import UIKit
 class SplitViewController: UISplitViewController, UISplitViewControllerDelegate {
     
     var assignedDisplayMode:UISplitViewControllerDisplayMode!
+    
+    var contentManager: ContentManager {
+        return ContentManager.sharedInstance
+    }
     var placeId:Int! {
         didSet {
             let placeViewController = self.viewControllers.last as! PlaceViewController
-            placeViewController.placeSelected(ContentManager.sharedInstance.getContent(placeId))
+            placeViewController.placeSelected(contentManager.getContent(placeId))
         }
     }
     
@@ -22,9 +26,9 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
         let placeViewController = self.viewControllers.last as! PlaceViewController
         
         if let id = placeId {
-            placeViewController.content = ContentManager.sharedInstance.getContent(id)
+            placeViewController.content = contentManager.getContent(id)
         } else {
-            placeViewController.content = ContentManager.sharedInstance.contents.first
+            placeViewController.content = contentManager.getContents().first
         }
         
         
@@ -36,6 +40,7 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
     }
     
     // Decide to show detail view controller or primary view controller
+    // When shown from the callout on map detail is shown
     
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
         if let givenDisplayMode = assignedDisplayMode {

@@ -74,6 +74,18 @@ class LocationManager:NSObject, CLLocationManagerDelegate {
             let content = ContentManager.sharedInstance.getContent(placeId!)
             delegate.placeSelected(content)
         }
+        let standardDefaults = NSUserDefaults.standardUserDefaults()
+        standardDefaults.setInteger(placeId!, forKey: "LastSeenPlaceId")
         
+    }
+    
+    func clearLocationData() {
+        let standardDefaults = NSUserDefaults.standardUserDefaults()
+        standardDefaults.removeObjectForKey("LastSeenPlaceId")
+        for region in locationManager.monitoredRegions {
+            if let circularRegion = region as? CLCircularRegion {
+                locationManager.stopMonitoringForRegion(circularRegion)
+            }
+        }
     }
 }

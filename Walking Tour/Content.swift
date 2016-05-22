@@ -7,14 +7,26 @@
 //
 
 import Foundation
+import CoreData
 
-class Content {
-    var id:Int
-    var title:String
-    var description:String
-    var photos:[Photo]
+class Content:NSManagedObject {
     
-    init(dictionary:[String:AnyObject]){
+    @NSManaged var id:NSNumber
+    @NSManaged var seqno:NSNumber
+    @NSManaged var title:String
+    @NSManaged var explaination:String
+    @NSManaged var photos:NSSet
+    
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+
+    
+    init(dictionary:[String:AnyObject],context:NSManagedObjectContext){
+        
+        let entity = NSEntityDescription.entityForName("Content", inManagedObjectContext: context)
+        super.init(entity: entity!,insertIntoManagedObjectContext:context)
+        
         if let idFromJson = dictionary["id"] as? Int {
             id = idFromJson
         } else {
@@ -28,16 +40,23 @@ class Content {
         }
         
         if let descriptionFromJson = dictionary["description"] as? String {
-            description = descriptionFromJson
+            explaination = descriptionFromJson
         } else {
-            description = ""
+            explaination = ""
         }
         
-        photos=[Photo]()
+        if let seqnoFromJson = dictionary["poi_id"] as? Int {
+            seqno = seqnoFromJson
+        } else {
+            seqno = 1
+        }
+        
+        var photos=[Photo]()
         if let photosFromJson = dictionary["images"] as? [[String:String]] {
             for photoFromJson in photosFromJson {
-                photos.append(Photo(dictionary: photoFromJson))
+                photos.append(Photo(dictionary: photoFromJson,context: context))
             }
         }
+        self.photos = NSSet(array: photos)
     }
 }

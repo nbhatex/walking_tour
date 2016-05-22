@@ -24,8 +24,6 @@ class MapController:UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         
-        setMapRegion()
-        
         addPlaceAnnotations()
         
         addPath()
@@ -35,22 +33,42 @@ class MapController:UIViewController, MKMapViewDelegate {
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let standardUserDefaults = NSUserDefaults.standardUserDefaults()
+        let placeId = standardUserDefaults.valueForKey("LastSeenPlaceId") as? Int
+        if placeId != nil {
+            setMapRegionWalk(placeId!)
+        } else {
+            setMapRegionPreview()
+        }
+        
+    }
+    
     func addPlaceAnnotations() {
         let places = geoDataManager.getPlaces();
         var annotations = [MKPointAnnotation]()
         for place in places {
-            let annotation = PlaceAnnotation(id: place.id)
-            annotation.title = contentManager.getContent(place.id)!.title
+            let annotation = PlaceAnnotation(id: Int(place.id))
+            annotation.title = contentManager.getContent(Int(place.id))!.title
             annotation.coordinate = place.coordinate
             annotations.append(annotation)
         }
         mapView.addAnnotations(annotations)
     }
     
-    func setMapRegion() {
+    func setMapRegionPreview() {
         let bounds = geoDataManager.getBounds()
         let center = CLLocationCoordinate2D(latitude: bounds.centerLatitude, longitude: bounds.centerLongitude)
         let span = MKCoordinateSpan(latitudeDelta: bounds.latitudeDelta * 1.2 , longitudeDelta: bounds.longitudeDelta * 1.2)
+        let region = MKCoordinateRegion(center: center, span: span)
+        mapView.region = region
+    }
+    
+    func setMapRegionWalk(placeId:Int) {
+        let bBox = geoDataManager.getBoundingBox(placeId)
+        let center = CLLocationCoordinate2D(latitude: bBox.centerLatitude, longitude: bBox.centerLongitude)
+        let span = MKCoordinateSpan(latitudeDelta: bBox.latitudeDelta * 1.2 , longitudeDelta: bBox.longitudeDelta * 1.2)
         let region = MKCoordinateRegion(center: center, span: span)
         mapView.region = region
     }

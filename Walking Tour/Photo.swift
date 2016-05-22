@@ -7,11 +7,20 @@
 //
 
 import Foundation
-class Photo {
-    var name:String
-    var title:String
+import CoreData
+class Photo:NSManagedObject {
+    @NSManaged var name:String
+    @NSManaged var title:String
     
-    init(dictionary:[String:String]){
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
+    init(dictionary:[String:String], context:NSManagedObjectContext){
+        
+        let entity = NSEntityDescription.entityForName("Photo", inManagedObjectContext: context)
+        super.init(entity: entity!,insertIntoManagedObjectContext:context)
+        
         if let nameFromJson = dictionary["resourceId"]  {
             name = nameFromJson
         } else {

@@ -7,25 +7,29 @@
 //
 
 import UIKit
+import CoreData
 
 class ContentManager {
     static let sharedInstance = ContentManager()
-    var contents:[Content]
-    private var contentsForSearch:[Int:Content]
-    private init() {
+    private init() { }
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance.managedObjectContext
+    }
+
+    func loadData(walk:Walk) {
         let dataAsset = NSDataAsset(name: "text_json")
-        contents = [Content]()
-        contentsForSearch = [Int:Content]()
+        var contents = [Content]()
         do {
             if let data = dataAsset?.data {
                 let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
                 if let contentJsons = parsedData as? [[String:AnyObject]] {
                     for dictionary in contentJsons {
-                        let content = Content(dictionary: dictionary)
+                        let content = Content(dictionary: dictionary,context: sharedContext)
                         contents.append(content)
-                        contentsForSearch[content.id] = content
                     }
                 }
+                walk.contents = NSSet(array: contents)
+                CoreDataStackManager.sharedInstance.saveContext()
             }
         } catch {
             print(error)
@@ -33,10 +37,28 @@ class ContentManager {
     }
     
     func getContents() -> [Content] {
-        return contents
+        let fetchRequest = NSFetchRequest(entityName: "Content")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key:"seqno",ascending:true)]
+        
+        do {
+            let contents = try sharedContext.executeFetchRequest(fetchRequest) as? [Content]
+            return contents!
+        } catch {
+            
+        }
+        return [Content]()
     }
     
     func getContent(id:Int) -> Content! {
-        return contentsForSearch[id]
+        let fetchRequest = NSFetchRequest(entityName: "Content")
+        fetchRequest.predicate = NSPredicate(format: "id = %d", id)
+        
+        do {
+            let contents = try sharedContext.executeFetchRequest(fetchRequest) as? [Content]
+            return contents?.first
+        } catch {
+            
+        }
+        return nil
     }
 }

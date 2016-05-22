@@ -20,17 +20,20 @@ class PlaceListController: UITableViewController {
     
     var sectioHeaderView:UIView!
     
+    var contents:[Content]!
+    
     var contentManager:ContentManager {
         return ContentManager.sharedInstance
     }
     override func viewDidLoad() {
         initSectionHeader()
+        contents = contentManager.getContents()
     }
     
     //MARK: table delegate methods
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return contentManager.contents.count
+            return contents.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -38,13 +41,13 @@ class PlaceListController: UITableViewController {
         if cell == nil {
             cell = PlaceListCell()
         }
-        cell!.setTitle(contentManager.contents[indexPath.row].title)
+        cell!.setTitle(contents[indexPath.row].title)
         return cell!
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let detailDelegate = delegate {
-            detailDelegate.placeSelected(contentManager.contents[indexPath.row])
+            detailDelegate.placeSelected(contents[indexPath.row])
         }
         
         if let detailViewController = self.delegate as? PlaceViewController {
