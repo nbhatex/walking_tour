@@ -41,7 +41,11 @@ class PlaceViewController:UIViewController, PlaceSelectionDelegate, UIScrollView
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
+    
+    // MARK: PlaceSelectionDelegate method
+    
     func placeSelected(newContent: Content) {
+        imageScrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         let data = newContent.explaination.dataUsingEncoding(NSUTF8StringEncoding)
         do {
             let formattedText = try NSAttributedString(data:data! , options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
@@ -79,19 +83,26 @@ class PlaceViewController:UIViewController, PlaceSelectionDelegate, UIScrollView
             
             imageNum = imageNum + 1.0
         }
-        if newContent.photos.count > 1 {
+        
+        showPageControl(newContent.photos.count)
+        
+        imageScrollView.sizeToFit()
+        
+        scrollViewHeight.constant = imageHeight+20
+    }
+    
+    func showPageControl(count:Int)  {
+        if count > 1 {
             pageControl.pageIndicatorTintColor = UIColor(colorLiteralRed: 1, green: 0, blue: 0, alpha: 1)
             pageControl.currentPageIndicatorTintColor = UIColor(colorLiteralRed: 0, green: 1, blue: 0, alpha: 1)
-            pageControl.numberOfPages = newContent.photos.count
+            pageControl.numberOfPages = count
             pageControl.autoresizingMask = .FlexibleLeftMargin
             pageControl.currentPage = 0
             pageControl.hidden = false
         }
-        imageScrollView.sizeToFit()
-        
-        
-        scrollViewHeight.constant = imageHeight+20
     }
+    
+    //MARK: scroll view delegate method
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if pageControl != nil {
