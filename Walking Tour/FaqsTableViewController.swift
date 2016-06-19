@@ -19,9 +19,11 @@ class FaqsTableViewController : UITableViewController {
     }
     var currentSelected:NSIndexPath!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         sectionCounts = [Int](count: faqsManager.faqs.count, repeatedValue: 0)
+        activityIndicator.hidden = true
     }
 
     // MARK: Tableview delegate methods
@@ -115,10 +117,12 @@ class FaqsTableViewController : UITableViewController {
                     tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation(rawValue: 0)! )
                     tableView.endUpdates()
                 } else {
+                    activityIndicator.startAnimating()
                     WeatherManager.sharedInstance.getWeatherForNext3days(faq.cityId!,successHandler: {forecasts in
                         self.sectionCounts[section] = forecasts.count
                         self.sectionData[section] = forecasts
                         dispatch_async(dispatch_get_main_queue(), {
+                            self.activityIndicator.stopAnimating()
                             self.tableView.beginUpdates()
                             var indexPaths = [NSIndexPath]()
                             for index in 0..<forecasts.count {
@@ -129,7 +133,14 @@ class FaqsTableViewController : UITableViewController {
                 
                         })
                 },failureHandler: { message in
-                    print(message)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.activityIndicator.stopAnimating()
+                        let alert = UIAlertController(title: "Weather Data", message: message, preferredStyle: .Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
+                            // Do nothing
+                        }))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    })
                     })
                 }
             } else {
