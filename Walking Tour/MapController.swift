@@ -13,6 +13,7 @@ class MapController:UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    var walk:Walk!
     
     var geoDataManager:GeoDataManager {
         return GeoDataManager.sharedInstance
@@ -24,12 +25,18 @@ class MapController:UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         
+        let standardDefaults = NSUserDefaults.standardUserDefaults()
+        let walkId = standardDefaults.valueForKey("CurrentWalkId") as? String
+        walk = WalkManager.sharedInstance.getWalk(walkId!)!
+        
         addPlaceAnnotations()
         
         addPath()
         mapView.delegate = self
         
         LocationManager.sharedInstance.mapView = mapView
+        
+       
         
     }
     
@@ -46,13 +53,14 @@ class MapController:UIViewController, MKMapViewDelegate {
     }
     
     func addPlaceAnnotations() {
-        /*let standardDefaults = NSUserDefaults.standardUserDefaults()
-        let walkId = standardDefaults.valueForKey("CurrentWalkId") as? String
-        let places = WalkManager.sharedInstance.getWalk(walkId!)?.places*/
-        let places = GeoDataManager.sharedInstance.getPlaces()
+        
+        //let places = GeoDataManager.sharedInstance.getPlaces(walk)
+        let places = walk.places
         var annotations = [MKPointAnnotation]()
-        for place in places {
-            let annotation = PlaceAnnotation(id: Int(place.id))
+        
+        for place in places! {
+            let place = place as! Place
+            let annotation = PlaceAnnotation(id: Int((place).id))
             annotation.title = contentManager.getContent(Int(place.id))!.title
             annotation.coordinate = place.coordinate
             annotations.append(annotation)
@@ -61,7 +69,11 @@ class MapController:UIViewController, MKMapViewDelegate {
     }
     
     func setMapRegionPreview() {
-        let bounds = geoDataManager.getBounds()
+        if let savedRegion = createRegionFromSavedData() {
+            mapView.region = savedRegion
+            return
+        }
+        let bounds = walk.getBounds()
         let center = CLLocationCoordinate2D(latitude: bounds.centerLatitude, longitude: bounds.centerLongitude)
         let span = MKCoordinateSpan(latitudeDelta: bounds.latitudeDelta * 1.2 , longitudeDelta: bounds.longitudeDelta * 1.2)
         let region = MKCoordinateRegion(center: center, span: span)
@@ -76,8 +88,71 @@ class MapController:UIViewController, MKMapViewDelegate {
         mapView.region = region
     }
     
+    func saveMapCurrentRegion() {
+        let center = mapView.region.center
+        let latitude = center.latitude
+        let longitude = center.longitude
+        
+        let span = mapView.region.span
+        let latitudeDelta = span.latitudeDelta
+        let longitudeDelta = span.longitudeDelta
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setDouble(latitude, forKey: "mapRegionCenterLatitude")
+        userDefaults.setDouble(longitude, forKey: "mapRegionCenterLongitude")
+        userDefaults.setDouble(latitudeDelta, forKey: "mapRegionCenterLatitudeDelta")
+        userDefaults.setDouble(longitudeDelta, forKey: "mapRegionCenterLongitudeDelta")
+    }
+    
+    func createRegionFromSavedData() -> MKCoordinateRegion? {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        var latitude = 0.0, longitude = 0.0, latitudeDelta = 100.0, longitudeDelta = 100.0
+        if let value = userDefaults.valueForKey("mapRegionCenterLatitude") {
+            latitude = value as! Double
+        } else {
+            return nil
+        }
+        
+        if let value = userDefaults.valueForKey("mapRegionCenterLongitude") {
+            longitude = value as! Double
+        } else {
+            return nil
+        }
+        
+        if let value = userDefaults.valueForKey("mapRegionCenterLatitudeDelta") {
+            latitudeDelta = value as! Double
+        } else {
+            return nil
+        }
+        
+        if let value  = userDefaults.valueForKey("mapRegionCenterLongitudeDelta") {
+            longitudeDelta = value as! Double
+        } else {
+            return nil
+        }
+        
+        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let span = MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
+        
+        return MKCoordinateRegion(center: center, span: span)
+    }
+    
+    func mapViewRegionDidChangeFromUserInteraction() -> Bool {
+        let view = self.mapView.subviews[0]
+        //  Look through gesture recognizers to determine whether this region change is from user interaction
+        if let gestureRecognizers = view.gestureRecognizers {
+            for recognizer in gestureRecognizers {
+                if (recognizer.state == UIGestureRecognizerState.Began || recognizer.state == UIGestureRecognizerState.Ended) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    
     func addPath() {
-        var coordinates = geoDataManager.getConnectedPath()
+        var coordinates = walk.getConnectedPath()
         let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
         mapView.addOverlay(polyline)
     }
@@ -125,4 +200,13 @@ class MapController:UIViewController, MKMapViewDelegate {
             self.tabBarController?.selectedIndex = 1
         }
     }
+    
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        if(mapViewRegionDidChangeFromUserInteraction()) {
+            saveMapCurrentRegion()
+        }
+    }
+    
+
+    
 }

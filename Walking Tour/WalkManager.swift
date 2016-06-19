@@ -16,14 +16,14 @@ class WalkManager {
     
     func loadData() {
         let walk = Walk(name:"Fontinahs Walk", context: sharedContext)
-        CoreDataStackManager.sharedInstance.saveContext()
+        
         //let places = GeoDataManager.sharedInstance.getPlaces()
         
         //walk.places = NSSet(array: places)
         GeoDataManager.sharedInstance.loadData(walk)
         ContentManager.sharedInstance.loadData(walk)
         
-        
+        CoreDataStackManager.sharedInstance.saveContext()
     }
     
     var sharedContext: NSManagedObjectContext {
@@ -47,7 +47,7 @@ class WalkManager {
     
     func  getWalk(id:String) -> Walk? {
         let fetchRequest = NSFetchRequest(entityName: "Walk")
-        fetchRequest.predicate = NSPredicate(format: "id = %s", id)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         var walks=[Walk]()
         do {
              walks = try sharedContext.executeFetchRequest(fetchRequest) as! [Walk]

@@ -29,7 +29,7 @@ class ContentManager {
                     }
                 }
                 walk.contents = NSSet(array: contents)
-                CoreDataStackManager.sharedInstance.saveContext()
+                //CoreDataStackManager.sharedInstance.saveContext()
             }
         } catch {
             print(error)

@@ -20,11 +20,7 @@ class LocationManager:NSObject, CLLocationManagerDelegate {
     }
     var authorized:Bool
     
-    var placeSelectionDelegate:PlaceSelectionDelegate! {
-        didSet {
-            addGeoFencesForPlace()
-        }
-    }
+    var placeSelectionDelegate:PlaceSelectionDelegate!
     
     static let sharedInstance = LocationManager()
     
@@ -57,10 +53,11 @@ class LocationManager:NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func addGeoFencesForPlace() {
-        let places = GeoDataManager.sharedInstance.getPlaces()
+    func addGeoFencesForPlace(walk:Walk) {
+        let places = walk.places
         
-        for place in places {
+        for place in places! {
+            let place = (place as? Place)!
             let region = CLCircularRegion(center: place.coordinate, radius: 10, identifier: "\(place.id)")
             region.notifyOnEntry = true
             region.notifyOnExit = true

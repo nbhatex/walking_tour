@@ -27,8 +27,11 @@ class GeoDataManager {
                     place.walk = walk
                     places.append(place)
                 }
-                walk.places = NSOrderedSet(array: places)
-                CoreDataStackManager.sharedInstance.saveContext()
+                let mutablePlaces = walk.places?.mutableCopy() as! NSMutableOrderedSet
+                mutablePlaces.addObjectsFromArray(places)
+                walk.places = mutablePlaces.copy() as? NSOrderedSet
+                
+                //CoreDataStackManager.sharedInstance.saveContext()
             }
             
         } catch  {
@@ -36,9 +39,10 @@ class GeoDataManager {
         }
     }
     
-    func getPlaces() -> [Place] {
+    /*func getPlaces(walk:Walk) -> [Place] {
         let fetchRequest = NSFetchRequest(entityName: "Place")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "seqno", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "walk = %@",walk)
         do {
             let places = try sharedContext.executeFetchRequest(fetchRequest) as? [Place]
             return places!
@@ -46,39 +50,12 @@ class GeoDataManager {
             print(error)
         }
         return [Place]()
-    }
+    }*/
     var sharedContext: NSManagedObjectContext {
         return CoreDataStackManager.sharedInstance.managedObjectContext
     }
     
-    func getBounds()-> BBox{
-        var maxLat = 0.0, minLat = 90.0, maxLng = 0.0, minLng = 180.0
-        let places = getPlaces()
-        for place in places {
-            if maxLat < Double(place.latitude) {
-                maxLat = Double(place.latitude)
-            }
-            if minLat > Double(place.latitude) {
-                minLat = Double(place.latitude)
-            }
-            if maxLng < Double(place.longitude) {
-                maxLng = Double(place.longitude)
-            }
-            if minLng > Double(place.longitude) {
-                minLng = Double(place.longitude)
-            }
-        }
-        let latitudeDelta = maxLat - minLat
-        let longitudeDelta = maxLng - minLng
-        
-        let centerLatitude = (maxLat+minLat)/2
-        let centerLongitude = (maxLng+minLng)/2
-        
-        print(latitudeDelta, longitudeDelta)
-        
-        return BBox(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta, centerLatitude: centerLatitude, centerLongitude: centerLongitude)
-        
-    }
+    
     
     func getBoundingBox(placeId:Int) -> BBox {
         
@@ -99,18 +76,7 @@ class GeoDataManager {
         return BBox(latitudeDelta: 1, longitudeDelta: 1, centerLatitude: 0, centerLongitude: 0)
     }
     
-    //TODO: needs to be a lazy variable
-    func getConnectedPath()->[CLLocationCoordinate2D] {
-        var coordinates = [CLLocationCoordinate2D]()
-        let places = getPlaces()
-        for place in places {
-            coordinates.append(place.coordinate)
-            for point in place.pathToNextPlace {
-                coordinates.append(point.coordinate)
-            }
-        }
-        return coordinates
-    }
+    
 }
 
 struct  BBox {

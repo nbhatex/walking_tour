@@ -22,4 +22,6 @@ class Walk: NSManagedObject {
         self.name = name
         self.id = NSUUID().UUIDString
     }
+    
+    
 }

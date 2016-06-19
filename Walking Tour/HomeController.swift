@@ -12,6 +12,7 @@ import CoreData
 class HomeController: UIViewController {
 
     @IBOutlet weak var currentWalk: UIButton!
+    var walkId:String!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,16 +22,18 @@ class HomeController: UIViewController {
             currentWalk.setTitle(walk.name, forState: .Normal)
             let standardDefaults = NSUserDefaults.standardUserDefaults()
             standardDefaults.setObject(walk.id, forKey: "CurrentWalkId")
+            walkId = walk.id
         }
     }
 
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "StartWalk" {
-            print("Start Walking")
             if let tabBarController = segue.destinationViewController as? UITabBarController {
                 if let placeSelectionDelegate = tabBarController.viewControllers![0] as? PlaceSelectionDelegate {
                     LocationManager.sharedInstance.placeSelectionDelegate = placeSelectionDelegate
+                    let walk = WalkManager.sharedInstance.getWalk(walkId)
+                    LocationManager.sharedInstance.addGeoFencesForPlace(walk!)
                 }
             }
             
