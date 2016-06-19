@@ -27,7 +27,8 @@ class PlaceListController: UITableViewController {
     }
     override func viewDidLoad() {
         initSectionHeader()
-        contents = contentManager.getContents()
+        let walk = WalkManager.sharedInstance.getCurrentWalk()
+        contents = walk.getContents()
     }
     
     //MARK: table delegate methods

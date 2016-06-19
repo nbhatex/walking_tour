@@ -67,5 +67,24 @@ class Place: NSManagedObject {
         return CLLocationCoordinate2D(latitude:Double(latitude), longitude:Double(longitude))
     }
     
+    func getBoundingBox() -> BBox {
+        
+        //let fetchRequest = NSFetchRequest(entityName: "Place")
+        //fetchRequest.predicate = NSPredicate(format: "id = %d", placeId)
+        //do {
+        //    let places = try sharedContext.executeFetchRequest(fetchRequest) as? [Place]
+        //    let place = places?.first
+            
+            let bBox = BBox(latitudeDelta: 0.0015, longitudeDelta: 0.0015, centerLatitude: Double(latitude), centerLongitude: Double(longitude))
+            
+            return bBox
+            
+        //} catch {
+        //    print(error)
+        //}
+        
+        //return BBox(latitudeDelta: 1, longitudeDelta: 1, centerLatitude: 0, centerLongitude: 0)
+    }
+    
 
 }

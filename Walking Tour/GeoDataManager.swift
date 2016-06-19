@@ -39,52 +39,23 @@ class GeoDataManager {
         }
     }
     
-    /*func getPlaces(walk:Walk) -> [Place] {
-        let fetchRequest = NSFetchRequest(entityName: "Place")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "seqno", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "walk = %@",walk)
-        do {
-            let places = try sharedContext.executeFetchRequest(fetchRequest) as? [Place]
-            return places!
-        } catch {
-            print(error)
-        }
-        return [Place]()
-    }*/
+
     var sharedContext: NSManagedObjectContext {
         return CoreDataStackManager.sharedInstance.managedObjectContext
     }
     
-    
-    
-    func getBoundingBox(placeId:Int) -> BBox {
-        
+    func getPlace(placeId:Int) -> Place? {
         let fetchRequest = NSFetchRequest(entityName: "Place")
         fetchRequest.predicate = NSPredicate(format: "id = %d", placeId)
         do {
             let places = try sharedContext.executeFetchRequest(fetchRequest) as? [Place]
             let place = places?.first
-            
-            let bBox = BBox(latitudeDelta: 0.0015, longitudeDelta: 0.0015, centerLatitude: Double((place?.latitude)!), centerLongitude: Double((place?.longitude)!))
-            
-            return bBox
-            
+            return place!
         } catch {
             print(error)
         }
-        
-        return BBox(latitudeDelta: 1, longitudeDelta: 1, centerLatitude: 0, centerLongitude: 0)
+        return nil
     }
-    
     
 }
 
-struct  BBox {
-    var latitudeDelta: Double,longitudeDelta: Double, centerLatitude: Double, centerLongitude: Double
-    init(latitudeDelta: Double,longitudeDelta: Double, centerLatitude: Double, centerLongitude: Double) {
-        self.latitudeDelta = latitudeDelta
-        self.longitudeDelta = longitudeDelta
-        self.centerLatitude = centerLatitude
-        self.centerLongitude = centerLongitude
-    }
-}

@@ -28,25 +28,11 @@ class ContentManager {
                         contents.append(content)
                     }
                 }
-                walk.contents = NSSet(array: contents)
-                //CoreDataStackManager.sharedInstance.saveContext()
+                walk.contents = NSOrderedSet(array: contents)
             }
         } catch {
             print(error)
         }
-    }
-    
-    func getContents() -> [Content] {
-        let fetchRequest = NSFetchRequest(entityName: "Content")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key:"seqno",ascending:true)]
-        
-        do {
-            let contents = try sharedContext.executeFetchRequest(fetchRequest) as? [Content]
-            return contents!
-        } catch {
-            
-        }
-        return [Content]()
     }
     
     func getContent(id:Int) -> Content! {

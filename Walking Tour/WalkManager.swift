@@ -59,4 +59,10 @@ class WalkManager {
         return walks.first
         
     }
+    
+    func getCurrentWalk() -> Walk {
+        let standardDefaults = NSUserDefaults.standardUserDefaults()
+        let walkId = standardDefaults.valueForKey("CurrentWalkId") as? String
+        return getWalk(walkId!)!
+    }
 }

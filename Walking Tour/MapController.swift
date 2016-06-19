@@ -25,9 +25,7 @@ class MapController:UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         
-        let standardDefaults = NSUserDefaults.standardUserDefaults()
-        let walkId = standardDefaults.valueForKey("CurrentWalkId") as? String
-        walk = WalkManager.sharedInstance.getWalk(walkId!)!
+        walk = WalkManager.sharedInstance.getCurrentWalk()
         
         addPlaceAnnotations()
         
@@ -54,7 +52,6 @@ class MapController:UIViewController, MKMapViewDelegate {
     
     func addPlaceAnnotations() {
         
-        //let places = GeoDataManager.sharedInstance.getPlaces(walk)
         let places = walk.places
         var annotations = [MKPointAnnotation]()
         
@@ -81,7 +78,7 @@ class MapController:UIViewController, MKMapViewDelegate {
     }
     
     func setMapRegionWalk(placeId:Int) {
-        let bBox = geoDataManager.getBoundingBox(placeId)
+        let bBox = geoDataManager.getPlace(placeId)!.getBoundingBox()
         let center = CLLocationCoordinate2D(latitude: bBox.centerLatitude, longitude: bBox.centerLongitude)
         let span = MKCoordinateSpan(latitudeDelta: bBox.latitudeDelta * 1.2 , longitudeDelta: bBox.longitudeDelta * 1.2)
         let region = MKCoordinateRegion(center: center, span: span)

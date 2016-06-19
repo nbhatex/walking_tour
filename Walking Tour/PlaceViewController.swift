@@ -26,7 +26,8 @@ class PlaceViewController:UIViewController, PlaceSelectionDelegate, UIScrollView
         if let placeContent = content {
             placeSelected(placeContent)
         } else {
-            if let firstContent = ContentManager.sharedInstance.getContents().first {
+            let walk = WalkManager.sharedInstance.getCurrentWalk()
+            if let firstContent = walk.getContents().first {
                 placeSelected(firstContent)
             }
         }

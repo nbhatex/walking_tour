@@ -21,6 +21,7 @@
 		4E114D321CDA462A0049002A /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E114D311CDA462A0049002A /* ContentManager.swift */; };
 		4E1547271CD96FAC00008C10 /* GeoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1547261CD96FAC00008C10 /* GeoDataManager.swift */; };
 		4E1547291CD9705A00008C10 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1547281CD9705A00008C10 /* Place.swift */; };
+		4E19E6A11D16DEAA00556DA5 /* BBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E19E6A01D16DEAA00556DA5 /* BBox.swift */; };
 		4E2716791CD623AA0062A7AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2716781CD623AA0062A7AD /* AppDelegate.swift */; };
 		4E27167B1CD623AA0062A7AD /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E27167A1CD623AA0062A7AD /* HomeController.swift */; };
 		4E27167E1CD623AA0062A7AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E27167C1CD623AA0062A7AD /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		4E114D311CDA462A0049002A /* ContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 		4E1547261CD96FAC00008C10 /* GeoDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoDataManager.swift; sourceTree = "<group>"; };
 		4E1547281CD9705A00008C10 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		4E19E6A01D16DEAA00556DA5 /* BBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBox.swift; sourceTree = "<group>"; };
 		4E2716751CD623AA0062A7AD /* Walking Tour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Walking Tour.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E2716781CD623AA0062A7AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E27167A1CD623AA0062A7AD /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				4E8E8D3D1CE8CC6600D2286A /* WaetherManager.swift */,
 				4E020DEA1CEA115F002CBB3B /* Forecast.swift */,
 				4E057A821CF0A06A006ABA5F /* WalkManager.swift */,
+				4E19E6A01D16DEAA00556DA5 /* BBox.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				4E020DEB1CEA115F002CBB3B /* Forecast.swift in Sources */,
 				4E6FE4941CDA653B004A0466 /* Content.swift in Sources */,
 				4E2716791CD623AA0062A7AD /* AppDelegate.swift in Sources */,
+				4E19E6A11D16DEAA00556DA5 /* BBox.swift in Sources */,
 				4E6FE4961CDA67B2004A0466 /* PlaceListController.swift in Sources */,
 				4E4B04951CDB8792008EBF29 /* SplitViewController.swift in Sources */,
 				4E4BB6D41CF1731700514683 /* Colors.swift in Sources */,

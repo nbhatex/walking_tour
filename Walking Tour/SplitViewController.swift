@@ -25,10 +25,12 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
     override func viewDidLoad() {
         let placeViewController = self.viewControllers.last as! PlaceViewController
         
+        let walk = WalkManager.sharedInstance.getCurrentWalk()
+        
         if let id = placeId {
             placeViewController.content = contentManager.getContent(id)
         } else {
-            placeViewController.content = contentManager.getContents().first
+            placeViewController.content = walk.getContents().first
         }
         
         
