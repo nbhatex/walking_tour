@@ -1,7 +1,9 @@
 Walking tour
 ------------
 
-This app helps to take walking tours. To start with it provides one walking tour for the area Fontinahs in Panjim city(India, Goa state). The walking tour has 3 elements, 
+This app helps to take walking tours. To start with it provides only "one" walking tour for the area Fontinahs in Panjim city(India, Goa state). The walking tour has 3 elements, 
 => First is the preparation for the walk. This can be done by clicking on the button "Prepare for Walk"  As part of the preparation it gives history of Goa and weather condition for next 5 days in the city. i
 => Second one can preview the walking route and the places that are going to be covered. One can switch between the map and list using icons on the bottom tool bar.  While on map the place marker can be tapped to get more information about the place. While on list one can tap the place name to get more information about the place.
 => Third the actual walk. When in start walk mode, based on the geo location places are shown and also one can see the map to the next destination.
+
+Note: Project also contains TestLocations.gpx to simulate locations for "Start Walk".
