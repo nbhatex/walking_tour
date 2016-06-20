@@ -103,28 +103,19 @@ class MapController:UIViewController, MKMapViewDelegate {
     
     func createRegionFromSavedData() -> MKCoordinateRegion? {
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        var latitude = 0.0, longitude = 0.0, latitudeDelta = 100.0, longitudeDelta = 100.0
-        if let value = userDefaults.valueForKey("mapRegionCenterLatitude") {
-            latitude = value as! Double
-        } else {
+        guard let latitude = (userDefaults.valueForKey("mapRegionCenterLatitude")  as! Double?) else {
             return nil
         }
         
-        if let value = userDefaults.valueForKey("mapRegionCenterLongitude") {
-            longitude = value as! Double
-        } else {
+        guard let longitude = (userDefaults.valueForKey("mapRegionCenterLongitude") as! Double?) else {
             return nil
         }
         
-        if let value = userDefaults.valueForKey("mapRegionCenterLatitudeDelta") {
-            latitudeDelta = value as! Double
-        } else {
+        guard let latitudeDelta = (userDefaults.valueForKey("mapRegionCenterLatitudeDelta") as! Double?) else {
             return nil
         }
         
-        if let value  = userDefaults.valueForKey("mapRegionCenterLongitudeDelta") {
-            longitudeDelta = value as! Double
-        } else {
+        guard let longitudeDelta  = (userDefaults.valueForKey("mapRegionCenterLongitudeDelta") as! Double?) else {
             return nil
         }
         

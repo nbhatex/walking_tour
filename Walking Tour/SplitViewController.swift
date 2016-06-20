@@ -17,8 +17,16 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
     }
     var placeId:Int! {
         didSet {
-            let placeViewController = self.viewControllers.last as! PlaceViewController
-            placeViewController.placeSelected(contentManager.getContent(placeId))
+            if let placeViewController = self.viewControllers.last as? PlaceViewController {
+                placeViewController.placeSelected(contentManager.getContent(placeId))
+            } else {
+                if let navigationController = self.viewControllers.last as? UINavigationController {
+                    if let innerPlace = navigationController.topViewController as? PlaceViewController {
+                        innerPlace.placeSelected(contentManager.getContent(placeId))
+                    }
+                }
+            }
+            
         }
     }
     

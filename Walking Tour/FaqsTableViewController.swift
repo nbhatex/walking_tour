@@ -23,7 +23,6 @@ class FaqsTableViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sectionCounts = [Int](count: faqsManager.faqs.count, repeatedValue: 0)
-        activityIndicator.hidden = true
     }
 
     // MARK: Tableview delegate methods
